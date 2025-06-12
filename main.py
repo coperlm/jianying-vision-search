@@ -295,11 +295,14 @@ def api_stats():
 def inject_now():
     return {'now': datetime.datetime.now()}
 
+a = 0
 
 if __name__ == '__main__':
     # 初始化图像数据库
-    logger.info("初始化图像数据库...")
-    init_image_database()
+    if a == 0:
+        logger.info("初始化图像数据库...")
+        init_image_database()
+        a += 1
     
     # 输出数据库状态
     # logger.info(f"数据库中共有 {len(image_similarity.image_database)} 张图片")
