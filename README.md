@@ -25,16 +25,13 @@
 - Python 3.7+
 - pip包管理器
 
-### 安装步骤
-
-1. 克隆或下载此项目到您的本地计算机
-2. 在Windows系统下，双击`start.bat`文件启动应用
-   - 这将自动安装依赖并启动服务器
-3. 打开浏览器访问: http://localhost:5000
-
 ### 手动安装
 
 1. 打开命令提示符，进入项目目录
+   ```
+   git clone https://github.com/coperlm/jianying-vision-search.git
+   cd ./jianying-vision-search
+   ```
 2. 安装依赖：
    ```
    pip install -r requirements.txt

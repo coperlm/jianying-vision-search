@@ -80,27 +80,27 @@ def init_image_database():
     test_images = [f for f in os.listdir(test_dir) if f.endswith(('.jpg', '.jpeg', '.png', '.gif'))]
     
     # 如果test目录没有图片，创建测试图片
-    if not test_images:
-        logger.info("测试图像目录为空，创建测试图片...")
-        web_crawler._create_test_images()
+    # if not test_images:
+    #     logger.info("测试图像目录为空，创建测试图片...")
+        # web_crawler._create_test_images()
     
     # 扫描所有图像目录（包括子目录）
     image_dir = os.path.join('static', 'images')
     count = image_similarity.scan_directory(image_dir)
     
     # 如果数据库仍然为空，尝试其他方法添加图片
-    if count == 0:
-        logger.warning("数据库仍然为空，尝试直接添加测试图片...")
-        test_images = [os.path.join(test_dir, f) for f in os.listdir(test_dir) 
-                      if f.endswith(('.jpg', '.jpeg', '.png', '.gif'))]
+    # if count == 0:
+    #     logger.warning("数据库仍然为空，尝试直接添加测试图片...")
+    #     test_images = [os.path.join(test_dir, f) for f in os.listdir(test_dir) 
+    #                   if f.endswith(('.jpg', '.jpeg', '.png', '.gif'))]
         
-        for path in test_images:
-            logger.info(f"添加图片到数据库: {path}")
-            image_similarity.add_to_database(path)
+    #     for path in test_images:
+    #         logger.info(f"添加图片到数据库: {path}")
+    #         image_similarity.add_to_database(path)
         
-        logger.info(f"已添加 {len(test_images)} 张测试图片到数据库")
-    else:
-        logger.info(f"已从本地目录加载 {count} 张图片")
+    #     logger.info(f"已添加 {len(test_images)} 张测试图片到数据库")
+    # else:
+    #     logger.info(f"已从本地目录加载 {count} 张图片")
 
 
 @app.route('/')
@@ -158,27 +158,45 @@ def search_by_image():
         flash('未找到指定图片')
         return redirect(url_for('index'))
         
-    try:
-        # 读取图像并搜索相似图片
-        image = cv2.imread(image_path)
-        if image is None:
-            flash('无法读取指定图片')
-            return redirect(url_for('index'))
-        
-        # 搜索相似图像
-        similar_images = image_similarity.search(image)
-        
-        # 跟踪处理计数
-        increment_processed_count()
-        
-        return render_template('results.html', 
-                              query_image=image_path, 
-                              similar_images=similar_images,
-                              now=datetime.datetime.now())
-    
-    except Exception as e:
-        flash(f'处理图像时出错: {str(e)}')
+
+    # 读取图像并搜索相似图片
+    image = cv2.imread(image_path)
+    if image is None:
+        flash('无法读取指定图片')
         return redirect(url_for('index'))
+    
+    # 搜索相似图像
+    similar_images = image_similarity.search(image)
+    
+    # 跟踪处理计数
+    increment_processed_count()
+    
+    return render_template('results.html', 
+                          query_image=image_path, 
+                          similar_images=similar_images,
+                          now=datetime.datetime.now())
+    
+    # try:
+    #     # 读取图像并搜索相似图片
+    #     image = cv2.imread(image_path)
+    #     if image is None:
+    #         flash('无法读取指定图片')
+    #         return redirect(url_for('index'))
+        
+    #     # 搜索相似图像
+    #     similar_images = image_similarity.search(image)
+        
+    #     # 跟踪处理计数
+    #     increment_processed_count()
+        
+    #     return render_template('results.html', 
+    #                           query_image=image_path, 
+    #                           similar_images=similar_images,
+    #                           now=datetime.datetime.now())
+    
+    # except Exception as e:
+    #     flash(f'处理图像时出错: {str(e)}')
+    #     return redirect(url_for('index'))
 
 
 @app.route('/upload', methods=['POST'])
@@ -284,9 +302,9 @@ if __name__ == '__main__':
     init_image_database()
     
     # 输出数据库状态
-    logger.info(f"数据库中共有 {len(image_similarity.image_database)} 张图片")
-    if len(image_similarity.image_database) > 0:
-        logger.info(f"数据库中的图片路径示例: {image_similarity.image_database[0]['path']}")
+    # logger.info(f"数据库中共有 {len(image_similarity.image_database)} 张图片")
+    # if len(image_similarity.image_database) > 0:
+    #     logger.info(f"数据库中的图片路径示例: {image_similarity.image_database[0]['path']}")
     
     # 启动应用
     logger.info("启动应用服务器...")
