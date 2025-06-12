@@ -1,0 +1,8 @@
+flask==2.0.1
+Pillow==8.4.0
+numpy==1.22.0
+opencv-python==4.5.5.64
+scipy==1.8.0
+scikit-image==0.19.1
+requests==2.27.1
+flask-wtf==1.0.0

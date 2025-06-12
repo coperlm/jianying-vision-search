@@ -1,0 +1,60 @@
+2025-06-12 14:26:15,032 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5000
+ * Running on http://10.44.1.122:5000
+2025-06-12 14:26:15,032 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2025-06-12 14:26:15,032 - werkzeug - INFO -  * Restarting with stat
+2025-06-12 14:26:22,272 - werkzeug - WARNING -  * Debugger is active!
+2025-06-12 14:26:22,279 - werkzeug - INFO -  * Debugger PIN: 589-906-772
+2025-06-12 14:26:29,044 - werkzeug - INFO - 127.0.0.1 - - [12/Jun/2025 14:26:29] "GET / HTTP/1.1" 200 -
+2025-06-12 14:26:29,299 - werkzeug - INFO - 127.0.0.1 - - [12/Jun/2025 14:26:29] "[33mGET /static/css/tailwind.css HTTP/1.1[0m" 404 -
+2025-06-12 14:26:29,377 - werkzeug - INFO - 127.0.0.1 - - [12/Jun/2025 14:26:29] "[36mGET /static/css/styles.css HTTP/1.1[0m" 304 -
+2025-06-12 14:38:18,309 - ¼øÓ°¿Æ¼¼ - INFO - Êı¾İ¿âÎª¿Õ£¬ÕıÔÚ³õÊ¼»¯Ê¾ÀıÍ¼Æ¬...
+2025-06-12 14:38:25,306 - ¼øÓ°¿Æ¼¼ - INFO - ÒÑÌí¼Ó 12 ÕÅÊ¾ÀıÍ¼Æ¬µ½Êı¾İ¿â
+2025-06-12 14:38:25,330 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5000
+ * Running on http://10.44.1.122:5000
+2025-06-12 14:38:25,330 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2025-06-12 14:38:25,332 - werkzeug - INFO -  * Restarting with stat
+2025-06-12 14:38:25,889 - ¼øÓ°¿Æ¼¼ - INFO - Êı¾İ¿âÎª¿Õ£¬ÕıÔÚ³õÊ¼»¯Ê¾ÀıÍ¼Æ¬...
+2025-06-12 14:38:32,763 - ¼øÓ°¿Æ¼¼ - INFO - ÒÑÌí¼Ó 12 ÕÅÊ¾ÀıÍ¼Æ¬µ½Êı¾İ¿â
+2025-06-12 14:38:32,779 - werkzeug - WARNING -  * Debugger is active!
+2025-06-12 14:38:32,787 - werkzeug - INFO -  * Debugger PIN: 589-906-772
+2025-06-12 14:39:08,098 - werkzeug - INFO -  * Detected change in 'C:\\Users\\coper\\Desktop\\ÏàËÆ¶È¼ì²â\\main.py', reloading
+2025-06-12 14:39:08,137 - werkzeug - INFO -  * Restarting with stat
+2025-06-12 14:39:08,673 - ¼øÓ°¿Æ¼¼ - INFO - Êı¾İ¿âÎª¿Õ£¬ÕıÔÚ³õÊ¼»¯Ê¾ÀıÍ¼Æ¬...
+2025-06-12 14:39:15,581 - ¼øÓ°¿Æ¼¼ - INFO - ÒÑÌí¼Ó 12 ÕÅÊ¾ÀıÍ¼Æ¬µ½Êı¾İ¿â
+2025-06-12 14:39:15,589 - werkzeug - WARNING -  * Debugger is active!
+2025-06-12 14:39:15,598 - werkzeug - INFO -  * Debugger PIN: 589-906-772
+2025-06-12 14:39:21,638 - werkzeug - INFO -  * Detected change in 'C:\\Users\\coper\\Desktop\\ÏàËÆ¶È¼ì²â\\main.py', reloading
+2025-06-12 14:39:21,680 - werkzeug - INFO -  * Restarting with stat
+2025-06-12 14:39:22,225 - ¼øÓ°¿Æ¼¼ - INFO - Êı¾İ¿âÎª¿Õ£¬ÕıÔÚ³õÊ¼»¯Ê¾ÀıÍ¼Æ¬...
+2025-06-12 14:39:29,090 - ¼øÓ°¿Æ¼¼ - INFO - ÒÑÌí¼Ó 12 ÕÅÊ¾ÀıÍ¼Æ¬µ½Êı¾İ¿â
+2025-06-12 14:39:29,106 - werkzeug - WARNING -  * Debugger is active!
+2025-06-12 14:39:29,114 - werkzeug - INFO -  * Debugger PIN: 589-906-772
+2025-06-12 14:45:21,067 - ¼øÓ°¿Æ¼¼ - INFO - ³õÊ¼»¯Í¼ÏñÊı¾İ¿â...
+2025-06-12 14:45:21,067 - root - INFO - ¿ªÊ¼É¨ÃèÍ¼ÏñÄ¿Â¼: static\images
+2025-06-12 14:45:27,652 - root - INFO - É¨ÃèÍê³É£¬¹²Ìí¼ÓÁË 12 ÕÅÍ¼Æ¬µ½Êı¾İ¿â
+2025-06-12 14:45:27,652 - ¼øÓ°¿Æ¼¼ - INFO - ÒÑ´Ó±¾µØÄ¿Â¼¼ÓÔØ 12 ÕÅÍ¼Æ¬
+2025-06-12 14:45:27,652 - ¼øÓ°¿Æ¼¼ - INFO - Êı¾İ¿âÖĞ¹²ÓĞ 12 ÕÅÍ¼Æ¬
+2025-06-12 14:45:27,652 - ¼øÓ°¿Æ¼¼ - INFO - Êı¾İ¿âÖĞµÄÍ¼Æ¬Â·¾¶Ê¾Àı: static\images\test\test_image_1.jpg
+2025-06-12 14:45:27,652 - ¼øÓ°¿Æ¼¼ - INFO - Æô¶¯Ó¦ÓÃ·şÎñÆ÷...
+2025-06-12 14:45:27,674 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5000
+ * Running on http://10.44.1.122:5000
+2025-06-12 14:45:27,674 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2025-06-12 14:45:27,676 - werkzeug - INFO -  * Restarting with stat
+2025-06-12 14:45:28,213 - ¼øÓ°¿Æ¼¼ - INFO - ³õÊ¼»¯Í¼ÏñÊı¾İ¿â...
+2025-06-12 14:45:28,213 - root - INFO - ¿ªÊ¼É¨ÃèÍ¼ÏñÄ¿Â¼: static\images
+2025-06-12 14:45:34,823 - root - INFO - É¨ÃèÍê³É£¬¹²Ìí¼ÓÁË 12 ÕÅÍ¼Æ¬µ½Êı¾İ¿â
+2025-06-12 14:45:34,823 - ¼øÓ°¿Æ¼¼ - INFO - ÒÑ´Ó±¾µØÄ¿Â¼¼ÓÔØ 12 ÕÅÍ¼Æ¬
+2025-06-12 14:45:34,823 - ¼øÓ°¿Æ¼¼ - INFO - Êı¾İ¿âÖĞ¹²ÓĞ 12 ÕÅÍ¼Æ¬
+2025-06-12 14:45:34,823 - ¼øÓ°¿Æ¼¼ - INFO - Êı¾İ¿âÖĞµÄÍ¼Æ¬Â·¾¶Ê¾Àı: static\images\test\test_image_1.jpg
+2025-06-12 14:45:34,823 - ¼øÓ°¿Æ¼¼ - INFO - Æô¶¯Ó¦ÓÃ·şÎñÆ÷...
+2025-06-12 14:45:34,830 - werkzeug - WARNING -  * Debugger is active!
+2025-06-12 14:45:34,839 - werkzeug - INFO -  * Debugger PIN: 589-906-772
+2025-06-12 14:45:44,823 - werkzeug - INFO - 127.0.0.1 - - [12/Jun/2025 14:45:44] "GET / HTTP/1.1" 200 -
+2025-06-12 14:45:45,082 - werkzeug - INFO - 127.0.0.1 - - [12/Jun/2025 14:45:45] "[33mGET /static/css/tailwind.css HTTP/1.1[0m" 404 -
+2025-06-12 14:45:45,157 - werkzeug - INFO - 127.0.0.1 - - [12/Jun/2025 14:45:45] "[36mGET /static/css/styles.css HTTP/1.1[0m" 304 -
