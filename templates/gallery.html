@@ -1,0 +1,453 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="max-w-6xl mx-auto">
+    <div class="mb-8 flex flex-col md:flex-row justify-between items-start md:items-center space-y-4 md:space-y-0">
+        <h2 class="text-3xl font-bold text-gray-800 dark:text-gray-100 animate-on-load">图像库浏览</h2>
+        
+        <div class="flex flex-col sm:flex-row space-y-3 sm:space-y-0 sm:space-x-3">
+            <div class="relative">
+                <select id="categoryFilter" class="custom-select">
+                    <option value="all">所有分类</option>
+                    <option value="nature">自然风景</option>
+                    <option value="architecture">建筑结构</option>
+                    <option value="abstract">抽象图像</option>
+                    <option value="other">其他类别</option>
+                </select>
+            </div>
+              <div class="relative">
+                <select id="sortOrder" class="custom-select">
+                    <option value="newest">最新上传</option>
+                    <option value="popular">最受欢迎</option>
+                    <option value="name">名称排序</option>
+                </select>
+            </div>
+
+            <!-- 视图切换 -->
+            <div class="flex border border-gray-300 dark:border-gray-600 rounded-lg overflow-hidden">
+                <button id="gridViewBtn" class="bg-blue-600 text-white px-3 py-2 focus:outline-none">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+                        <path d="M5 3a2 2 0 00-2 2v2a2 2 0 002 2h2a2 2 0 002-2V5a2 2 0 00-2-2H5zM5 11a2 2 0 00-2 2v2a2 2 0 002 2h2a2 2 0 002-2v-2a2 2 0 00-2-2H5zM11 5a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2V5zM11 13a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2v-2z" />
+                    </svg>
+                </button>
+                <button id="listViewBtn" class="bg-white dark:bg-gray-700 text-gray-600 dark:text-gray-300 hover:text-gray-800 dark:hover:text-white px-3 py-2 focus:outline-none">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+                        <path fill-rule="evenodd" d="M3 5a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 10a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 15a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1z" clip-rule="evenodd" />
+                    </svg>
+                </button>
+            </div>
+        </div>
+    </div>
+      <div class="bg-white dark:bg-gray-800 rounded-xl shadow-lg p-6 card">
+        <div id="galleryContainer">
+            <!-- 网格视图 -->
+            <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6" id="imageGallery">
+                <!-- 动态载入的图片内容 -->
+                {% for image in images %}
+                <div class="gallery-item animate-on-load" data-category="{% if loop.index is divisibleby 4 %}nature{% elif loop.index is divisibleby 3 %}architecture{% elif loop.index is divisibleby 2 %}abstract{% else %}other{% endif %}" data-date="{{ now.timestamp() - loop.index * 86400 }}" data-popularity="{{ 100 - loop.index % 50 }}">
+                    <div class="bg-gray-50 dark:bg-gray-700 rounded-lg overflow-hidden shadow-sm hover:shadow-lg transition-all duration-300 relative group img-hover-zoom">
+                        <img data-src="{{ url_for('static', filename=image.path.replace('static/', '')) }}" 
+                             src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 300'%3E%3Crect fill='%23f3f4f6' width='400' height='300'/%3E%3C/svg%3E" 
+                             alt="{{ image.filename }}" 
+                             class="w-full h-48 object-cover transition-opacity duration-300 opacity-0">
+                        <div class="absolute inset-0 bg-black bg-opacity-60 opacity-0 group-hover:opacity-100 flex items-center justify-center transition-opacity duration-300">
+                            <div class="text-white text-center p-4">
+                                <h3 class="font-medium mb-1">{{ image.filename }}</h3>
+                                <div class="flex justify-center space-x-2 mt-2">
+                                    <button class="bg-blue-600 hover:bg-blue-700 text-white p-2 rounded-full transform transition hover:scale-110" 
+                                            data-tooltip="搜索相似图片"
+                                            onclick="searchSimilar('{{ image.path }}')">
+                                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+                                        </svg>
+                                    </button>
+                                    <button class="bg-green-600 hover:bg-green-700 text-white p-2 rounded-full transform transition hover:scale-110" 
+                                           data-tooltip="查看大图"
+                                           onclick="showImagePreview('{{ url_for('static', filename=image.path.replace('static/', '')) }}', '{{ image.filename }}')">
+                                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" />
+                                        </svg>
+                                    </button>
+                                    <button class="bg-purple-600 hover:bg-purple-700 text-white p-2 rounded-full transform transition hover:scale-110" 
+                                           data-tooltip="下载图片">
+                                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
+                                        </svg>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- 加载指示器 -->
+                        <div class="absolute inset-0 flex items-center justify-center bg-gray-50 dark:bg-gray-700 image-loader">
+                            <div class="loader"></div>
+                        </div>
+                    </div>
+                    <div class="mt-2 text-sm text-gray-600 dark:text-gray-300 truncate px-1">{{ image.filename }}</div>
+                </div>            {% endfor %}
+            
+            <!-- 如果没有图像数据，则显示占位图 -->
+            {% if not images or images|length == 0 %}
+            {% for i in range(12) %}
+            <div class="gallery-item" data-category="{% if loop.index is divisibleby 4 %}nature{% elif loop.index is divisibleby 3 %}architecture{% elif loop.index is divisibleby 2 %}abstract{% else %}other{% endif %}">
+                <div class="bg-gray-50 dark:bg-gray-700 rounded-lg overflow-hidden shadow-sm hover:shadow-md transition-shadow">
+                    <div class="w-full h-48 bg-gray-200 dark:bg-gray-600 flex items-center justify-center">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-12 w-12 text-gray-400 dark:text-gray-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" />
+                        </svg>
+                    </div>
+                    <div class="mt-2 text-sm text-gray-400 truncate px-1">测试图片_{{ loop.index }}</div>
+                </div>
+            </div>
+            {% endfor %}
+            {% endif %}
+            </div>
+            
+            <!-- 列表视图 -->
+            <div class="hidden" id="imageList">
+                <table class="min-w-full divide-y divide-gray-200 dark:divide-gray-700">
+                    <thead class="bg-gray-50 dark:bg-gray-700">
+                        <tr>
+                            <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-300 uppercase tracking-wider">图片</th>
+                            <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-300 uppercase tracking-wider">文件名</th>
+                            <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-300 uppercase tracking-wider">分类</th>
+                            <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-300 uppercase tracking-wider">操作</th>
+                        </tr>
+                    </thead>
+                    <tbody class="bg-white dark:bg-gray-800 divide-y divide-gray-200 dark:divide-gray-700">
+                        {% for image in images %}
+                        <tr class="gallery-list-item" data-category="{% if loop.index is divisibleby 4 %}nature{% elif loop.index is divisibleby 3 %}architecture{% elif loop.index is divisibleby 2 %}abstract{% else %}other{% endif %}">
+                            <td class="px-6 py-4 whitespace-nowrap">
+                                <div class="flex items-center">
+                                    <div class="h-10 w-10 rounded-md overflow-hidden bg-gray-100 dark:bg-gray-700">
+                                        <img data-src="{{ url_for('static', filename=image.path.replace('static/', '')) }}" 
+                                             src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 40 40'%3E%3Crect fill='%23f3f4f6' width='40' height='40'/%3E%3C/svg%3E" 
+                                             alt="{{ image.filename }}"
+                                             class="h-10 w-10 object-cover">
+                                    </div>
+                                </div>
+                            </td>
+                            <td class="px-6 py-4 whitespace-nowrap">
+                                <div class="text-sm text-gray-900 dark:text-gray-100">{{ image.filename }}</div>
+                            </td>
+                            <td class="px-6 py-4 whitespace-nowrap">
+                                <span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full 
+                                    {% if loop.index is divisibleby 4 %}bg-green-100 text-green-800 dark:bg-green-800 dark:text-green-100
+                                    {% elif loop.index is divisibleby 3 %}bg-blue-100 text-blue-800 dark:bg-blue-800 dark:text-blue-100
+                                    {% elif loop.index is divisibleby 2 %}bg-purple-100 text-purple-800 dark:bg-purple-800 dark:text-purple-100
+                                    {% else %}bg-yellow-100 text-yellow-800 dark:bg-yellow-800 dark:text-yellow-100{% endif %}">
+                                    {% if loop.index is divisibleby 4 %}自然风景
+                                    {% elif loop.index is divisibleby 3 %}建筑结构
+                                    {% elif loop.index is divisibleby 2 %}抽象图像
+                                    {% else %}其他类别{% endif %}
+                                </span>
+                            </td>
+                            <td class="px-6 py-4 whitespace-nowrap text-sm font-medium">
+                                <button onclick="searchSimilar('{{ image.path }}')" class="text-blue-600 hover:text-blue-900 dark:text-blue-400 dark:hover:text-blue-300 mx-1">搜索相似</button>
+                                <button onclick="showImagePreview('{{ url_for('static', filename=image.path.replace('static/', '')) }}', '{{ image.filename }}')" class="text-green-600 hover:text-green-900 dark:text-green-400 dark:hover:text-green-300 mx-1">查看</button>
+                            </td>
+                        </tr>
+                        {% endfor %}
+                        
+                        {% if not images or images|length == 0 %}
+                        <tr>
+                            <td colspan="4" class="px-6 py-10 text-center text-gray-500 dark:text-gray-400">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="mx-auto h-12 w-12 text-gray-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" />
+                                </svg>
+                                <p class="mt-2">暂无图片数据</p>
+                            </td>
+                        </tr>
+                        {% endif %}
+                    </tbody>
+                </table>
+            </div>
+        </div>        <!-- 分页和统计 -->
+        <div class="mt-8 flex flex-col md:flex-row justify-between items-center">
+            <p class="text-sm text-gray-600 dark:text-gray-400 mb-4 md:mb-0">
+                显示 <span id="shownItemsCount">{{ images|length if images else 0 }}</span> 张图片，
+                总计 <span id="totalItemsCount">{{ images|length if images else 0 }}</span> 张
+            </p>
+            
+            <nav class="relative z-0 inline-flex rounded-md shadow-sm -space-x-px" aria-label="Pagination">
+                <a href="#" class="relative inline-flex items-center px-2 py-2 rounded-l-md border border-gray-300 bg-white dark:bg-gray-800 dark:border-gray-600 text-sm font-medium text-gray-500 dark:text-gray-400 hover:bg-gray-50 dark:hover:bg-gray-700">
+                    <span class="sr-only">上一页</span>
+                    <svg class="h-5 w-5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                        <path fill-rule="evenodd" d="M12.707 5.293a1 1 0 010 1.414L9.414 10l3.293 3.293a1 1 0 01-1.414 1.414l-4-4a1 1 0 010-1.414l4-4a1 1 0 011.414 0z" clip-rule="evenodd" />
+                    </svg>
+                </a>
+                <a href="#" class="relative inline-flex items-center px-4 py-2 border border-gray-300 bg-white dark:bg-gray-800 dark:border-gray-600 text-sm font-medium text-gray-700 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-gray-700">
+                    1
+                </a>
+                <a href="#" class="relative inline-flex items-center px-4 py-2 border border-gray-300 bg-blue-50 dark:bg-blue-900 text-sm font-medium text-blue-600 dark:text-blue-300 dark:border-gray-600 hover:bg-blue-100 dark:hover:bg-blue-800">
+                    2
+                </a>
+                <a href="#" class="relative inline-flex items-center px-4 py-2 border border-gray-300 bg-white dark:bg-gray-800 dark:border-gray-600 text-sm font-medium text-gray-700 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-gray-700">
+                    3
+                </a>
+                <span class="relative inline-flex items-center px-4 py-2 border border-gray-300 bg-white dark:bg-gray-800 dark:border-gray-600 text-sm font-medium text-gray-700 dark:text-gray-400">
+                    ...
+                </span>
+                <a href="#" class="relative inline-flex items-center px-4 py-2 border border-gray-300 bg-white dark:bg-gray-800 dark:border-gray-600 text-sm font-medium text-gray-700 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-gray-700">
+                    10
+                </a>
+                <a href="#" class="relative inline-flex items-center px-2 py-2 rounded-r-md border border-gray-300 bg-white dark:bg-gray-800 dark:border-gray-600 text-sm font-medium text-gray-500 dark:text-gray-400 hover:bg-gray-50 dark:hover:bg-gray-700">
+                    <span class="sr-only">下一页</span>
+                    <svg class="h-5 w-5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                        <path fill-rule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clip-rule="evenodd" />
+                    </svg>
+                </a>
+            </nav>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block scripts %}
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    // 初始化元素引用
+    const categoryFilter = document.getElementById('categoryFilter');
+    const sortOrder = document.getElementById('sortOrder');
+    const gallery = document.getElementById('imageGallery');
+    const galleryItems = document.querySelectorAll('.gallery-item');
+    const listItems = document.querySelectorAll('.gallery-list-item');
+    const gridViewBtn = document.getElementById('gridViewBtn');
+    const listViewBtn = document.getElementById('listViewBtn');
+    const imageGallery = document.getElementById('imageGallery');
+    const imageList = document.getElementById('imageList');
+    const shownItemsCount = document.getElementById('shownItemsCount');
+    
+    // 图片懒加载
+    setupLazyLoading();
+    
+    // 视图切换功能
+    gridViewBtn.addEventListener('click', () => {
+        imageGallery.classList.remove('hidden');
+        imageList.classList.add('hidden');
+        gridViewBtn.classList.add('bg-blue-600', 'text-white');
+        gridViewBtn.classList.remove('bg-white', 'text-gray-600', 'dark:bg-gray-700', 'dark:text-gray-300');
+        listViewBtn.classList.remove('bg-blue-600', 'text-white');
+        listViewBtn.classList.add('bg-white', 'text-gray-600', 'dark:bg-gray-700', 'dark:text-gray-300');
+        
+        // 保存用户偏好
+        localStorage.setItem('galleryViewMode', 'grid');
+    });
+    
+    listViewBtn.addEventListener('click', () => {
+        imageGallery.classList.add('hidden');
+        imageList.classList.remove('hidden');
+        listViewBtn.classList.add('bg-blue-600', 'text-white');
+        listViewBtn.classList.remove('bg-white', 'text-gray-600', 'dark:bg-gray-700', 'dark:text-gray-300');
+        gridViewBtn.classList.remove('bg-blue-600', 'text-white');
+        gridViewBtn.classList.add('bg-white', 'text-gray-600', 'dark:bg-gray-700', 'dark:text-gray-300');
+        
+        // 保存用户偏好
+        localStorage.setItem('galleryViewMode', 'list');
+    });
+    
+    // 恢复用户的视图偏好
+    const savedViewMode = localStorage.getItem('galleryViewMode');
+    if (savedViewMode === 'list') {
+        listViewBtn.click();
+    }
+    
+    // 分类筛选事件
+    categoryFilter.addEventListener('change', function() {
+        const selectedCategory = this.value;
+        let visibleCount = 0;
+        
+        // 网格视图过滤
+        galleryItems.forEach(item => {
+            if (selectedCategory === 'all' || item.getAttribute('data-category') === selectedCategory) {
+                item.style.display = 'block';
+                visibleCount++;
+            } else {
+                item.style.display = 'none';
+            }
+        });
+        
+        // 列表视图过滤
+        listItems.forEach(item => {
+            if (selectedCategory === 'all' || item.getAttribute('data-category') === selectedCategory) {
+                item.style.display = '';
+            } else {
+                item.style.display = 'none';
+            }
+        });
+        
+        // 更新显示计数
+        if (shownItemsCount) {
+            shownItemsCount.textContent = visibleCount;
+        }
+    });
+    
+    // 排序事件
+    sortOrder.addEventListener('change', function() {
+        const selectedSort = this.value;
+        
+        // 网格视图排序
+        sortItems(galleryItems, selectedSort, gallery);
+        
+        // 列表视图排序
+        const listTable = imageList.querySelector('tbody');
+        if (listTable) {
+            sortItems(listItems, selectedSort, listTable);
+        }
+    });
+    
+    // 排序函数
+    function sortItems(items, sortType, container) {
+        const itemsArray = Array.from(items);
+        
+        if (sortType === 'name') {
+            itemsArray.sort((a, b) => {
+                const textA = a.querySelector('.text-gray-600, .text-gray-300, .dark\\:text-gray-100, .text-gray-900')?.innerText.toLowerCase() || '';
+                const textB = b.querySelector('.text-gray-600, .text-gray-300, .dark\\:text-gray-100, .text-gray-900')?.innerText.toLowerCase() || '';
+                return textA.localeCompare(textB);
+            });
+        } else if (sortType === 'popular') {
+            itemsArray.sort((a, b) => {
+                const popularityA = parseInt(a.getAttribute('data-popularity') || 0);
+                const popularityB = parseInt(b.getAttribute('data-popularity') || 0);
+                return popularityB - popularityA;
+            });
+        } else {
+            // 默认按最新排序
+            itemsArray.sort((a, b) => {
+                const dateA = parseInt(a.getAttribute('data-date') || 0);
+                const dateB = parseInt(b.getAttribute('data-date') || 0);
+                return dateB - dateA;
+            });
+        }
+        
+        // 重新添加排序后的元素
+        itemsArray.forEach(item => {
+            container.appendChild(item);
+        });
+    }
+    
+    // 图片懒加载设置
+    function setupLazyLoading() {
+        const lazyImages = document.querySelectorAll('img[data-src]');
+        
+        if ('IntersectionObserver' in window) {
+            const imageObserver = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        const img = entry.target;
+                        const loader = img.closest('.img-hover-zoom')?.querySelector('.image-loader');
+                        
+                        img.onload = function() {
+                            img.classList.remove('opacity-0');
+                            img.classList.add('opacity-100');
+                            if (loader) {
+                                setTimeout(() => {
+                                    loader.style.display = 'none';
+                                }, 200);
+                            }
+                        };
+                        
+                        img.src = img.dataset.src;
+                        img.removeAttribute('data-src');
+                        imageObserver.unobserve(img);
+                    }
+                });
+            });
+            
+            lazyImages.forEach(img => imageObserver.observe(img));
+        } else {
+            // 降级处理
+            lazyImages.forEach(img => {
+                img.src = img.dataset.src;
+                img.classList.remove('opacity-0');
+                img.classList.add('opacity-100');
+                img.removeAttribute('data-src');
+                
+                const loader = img.closest('.img-hover-zoom')?.querySelector('.image-loader');
+                if (loader) {
+                    loader.style.display = 'none';
+                }
+            });
+        }
+    }
+});
+
+// 搜索相似图片功能
+function searchSimilar(imagePath) {
+    window.location.href = `/search?image=${encodeURIComponent(imagePath)}`;
+}
+
+// 图片预览功能
+function showImagePreview(imageUrl, title) {
+    // 创建预览遮罩
+    const overlay = document.createElement('div');
+    overlay.className = 'fixed inset-0 z-50 bg-black bg-opacity-80 flex items-center justify-center p-4 transition-opacity duration-300 opacity-0';
+    overlay.id = 'imagePreviewOverlay';
+    
+    // 创建预览内容
+    overlay.innerHTML = `
+        <div class="max-w-5xl max-h-[90vh] bg-white dark:bg-gray-900 rounded-lg overflow-hidden shadow-2xl relative transform transition-transform duration-300 scale-95">
+            <div class="flex justify-between items-center p-4 border-b border-gray-200 dark:border-gray-700">
+                <h3 class="text-lg font-medium text-gray-900 dark:text-gray-100">${title || '图片预览'}</h3>
+                <button id="closePreview" class="text-gray-500 hover:text-gray-700 dark:text-gray-400 dark:hover:text-gray-200 focus:outline-none">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+                    </svg>
+                </button>
+            </div>
+            <div class="p-4 bg-gray-50 dark:bg-gray-800 overflow-auto" style="max-height: calc(90vh - 60px);">
+                <img src="${imageUrl}" alt="${title || '预览图'}" class="max-w-full mx-auto" style="max-height: calc(90vh - 120px);">
+            </div>
+            <div class="p-4 border-t border-gray-200 dark:border-gray-700 flex justify-between">
+                <button class="px-4 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-700" onclick="searchSimilar('${imageUrl}')">搜索相似图片</button>
+                <a href="${imageUrl}" download class="px-4 py-2 bg-green-600 text-white rounded-md hover:bg-green-700">下载图片</a>
+            </div>
+        </div>
+    `;
+    
+    // 添加到DOM
+    document.body.appendChild(overlay);
+    document.body.style.overflow = 'hidden';
+    
+    // 动画显示
+    setTimeout(() => {
+        overlay.style.opacity = '1';
+        overlay.querySelector('div').classList.remove('scale-95');
+        overlay.querySelector('div').classList.add('scale-100');
+    }, 10);
+    
+    // 绑定关闭事件
+    overlay.querySelector('#closePreview').addEventListener('click', closeImagePreview);
+    overlay.addEventListener('click', (e) => {
+        if (e.target === overlay) {
+            closeImagePreview();
+        }
+    });
+    
+    // 绑定ESC键关闭
+    document.addEventListener('keydown', handleEscKey);
+    
+    function handleEscKey(e) {
+        if (e.key === 'Escape') {
+            closeImagePreview();
+        }
+    }
+    
+    function closeImagePreview() {
+        const overlay = document.getElementById('imagePreviewOverlay');
+        if (!overlay) return;
+        
+        overlay.style.opacity = '0';
+        overlay.querySelector('div').classList.remove('scale-100');
+        overlay.querySelector('div').classList.add('scale-95');
+        
+        setTimeout(() => {
+            document.body.removeChild(overlay);
+            document.body.style.overflow = '';
+            document.removeEventListener('keydown', handleEscKey);
+        }, 300);
+    }
+}
+</script>
+{% endblock %}

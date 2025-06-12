@@ -60,13 +60,13 @@
 {% endblock %}
 
 {% block content %}
-<div class="text-center mb-12">
+<div class="text-center mb-12 animate-on-load">
     <h2 class="text-3xl font-bold text-gray-800 mb-4">图像相似度检索系统</h2>
     <p class="text-xl text-gray-600">上传您的图片，我们将在全网范围内为您寻找相似的图像</p>
 </div>
 
-<div class="max-w-3xl mx-auto">
-    <div class="bg-white rounded-xl shadow-lg p-8">
+<div class="max-w-3xl mx-auto animate-on-load">
+    <div class="bg-white rounded-xl shadow-lg p-8 card">
         <form id="uploadForm" action="{{ url_for('upload_file') }}" method="post" enctype="multipart/form-data" class="space-y-6">
             <div class="drop-zone" id="dropZone">
                 <span class="drop-zone-prompt">
@@ -102,18 +102,23 @@
     </div>
 </div>
 
-<section class="mt-16 py-10 bg-gray-100 rounded-xl" id="about">
+<section class="mt-16 py-10 bg-gray-100 rounded-xl">
     <div class="container mx-auto px-4">
         <h2 class="text-3xl font-bold text-center mb-8">关于鉴影科技</h2>
         <div class="max-w-4xl mx-auto">
             <p class="text-lg text-gray-700 mb-4">鉴影科技致力于开发先进的图像识别和搜索技术，帮助用户快速找到相似图片，保护原创内容，防止盗版侵权。</p>
             <p class="text-lg text-gray-700 mb-4">我们的相似度检测系统采用先进的计算机视觉算法和深度学习技术，可以精准识别图像的各种特征，包括颜色分布、纹理、边缘特征等多个维度，从而准确计算图像间的相似度。</p>
-            <p class="text-lg text-gray-700">无论您是需要查找被盗用的原创图片，还是想了解某张图片的来源和使用情况，鉴影科技都能为您提供专业可靠的解决方案。</p>
+            <p class="text-lg text-gray-700 mb-6">无论您是需要查找被盗用的原创图片，还是想了解某张图片的来源和使用情况，鉴影科技都能为您提供专业可靠的解决方案。</p>
+            <div class="text-center">
+                <a href="/about" class="inline-block bg-blue-600 hover:bg-blue-700 text-white font-medium py-2 px-6 rounded-lg transition duration-300">
+                    了解更多
+                </a>
+            </div>
         </div>
     </div>
 </section>
 
-<section class="mt-16 py-10" id="help">
+<section class="mt-16 py-10">
     <div class="container mx-auto px-4">
         <h2 class="text-3xl font-bold text-center mb-8">使用帮助</h2>
         <div class="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-5xl mx-auto">
@@ -143,6 +148,28 @@
                 </div>
                 <h3 class="text-xl font-bold mb-2 text-center">查看结果</h3>
                 <p class="text-gray-700">搜索结果将显示相似度最高的图片，并附带相似度百分比，您可以点击查看原图或了解更多信息。</p>
+            </div>
+        </div>
+        <div class="text-center mt-8">
+            <a href="/help" class="inline-block bg-blue-600 hover:bg-blue-700 text-white font-medium py-2 px-6 rounded-lg transition duration-300">
+                查看完整使用指南
+            </a>
+        </div>    </div>
+</section>
+
+<!-- 最近搜索记录 -->
+<section class="mt-16 py-10" id="recentSearches">
+    <!-- 这里将由JavaScript动态填充内容 -->
+</section>
+
+<!-- 快速统计信息 -->
+<section class="mt-8 py-10 bg-gray-50 dark:bg-gray-800 rounded-xl">
+    <div class="container mx-auto px-4">
+        <h2 class="text-3xl font-bold text-center mb-8">实时数据</h2>
+        <div id="quickStats" class="animate-on-load">
+            <!-- 这里将由JavaScript动态填充统计数据 -->
+            <div class="flex justify-center">
+                <div class="loader"></div>
             </div>
         </div>
     </div>

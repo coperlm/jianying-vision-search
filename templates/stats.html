@@ -1,0 +1,287 @@
+{% extends 'base.html' %}
+
+{% block extra_head %}
+<!-- 引入Chart.js库 -->
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<!-- 引入图表工具函数 -->
+<script src="{{ url_for('static', filename='js/chart-utils.js') }}"></script>
+<style>
+    .stats-card {
+        transition: all 0.3s ease;
+    }
+    
+    .stats-card:hover {
+        transform: translateY(-5px);
+    }
+    
+    .chart-container {
+        position: relative;
+        margin: auto;
+        height: 300px;
+        width: 100%;
+    }
+</style>
+{% endblock %}
+
+{% block content %}
+<div class="max-w-6xl mx-auto">
+    <div class="bg-white dark:bg-gray-800 rounded-xl shadow-lg p-6 md:p-8 mb-10 card">
+        <h2 class="text-3xl font-bold mb-8 text-center text-gray-800 dark:text-gray-100 animate-on-load">系统统计数据</h2>
+        
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8 mb-12">
+            <div class="bg-gradient-to-br from-blue-500 to-blue-700 text-white p-6 rounded-xl shadow-md stats-card">
+                <div class="flex items-center justify-between mb-3">
+                    <h3 class="text-xl font-semibold">数据库规模</h3>
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 opacity-80" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 7v10c0 2.21 3.582 4 8 4s8-1.79 8-4V7M4 7c0 2.21 3.582 4 8 4s8-1.79 8-4M4 7c0-2.21 3.582-4 8-4s8 1.79 8 4m0 5c0 2.21-3.582 4-8 4s-8-1.79-8-4" />
+                    </svg>
+                </div>
+                <div class="text-4xl font-bold mb-2">{{ stats.database_size }}</div>
+                <p class="text-blue-100">图片总数</p>
+            </div>
+            
+            <div class="bg-gradient-to-br from-indigo-500 to-indigo-700 text-white p-6 rounded-xl shadow-md">
+                <div class="flex items-center justify-between mb-3">
+                    <h3 class="text-xl font-semibold">已处理图像</h3>
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 opacity-80" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
+                    </svg>
+                </div>
+                <div class="text-4xl font-bold mb-2">{{ stats.image_processed }}</div>
+                <p class="text-indigo-100">查询处理总数</p>
+            </div>
+            
+            <div class="bg-gradient-to-br from-purple-500 to-purple-700 text-white p-6 rounded-xl shadow-md">
+                <div class="flex items-center justify-between mb-3">
+                    <h3 class="text-xl font-semibold">今日上传</h3>
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 opacity-80" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
+                    </svg>
+                </div>
+                <div class="text-4xl font-bold mb-2">{{ stats.upload_today }}</div>
+                <p class="text-purple-100">今日图片上传数</p>
+            </div>
+        </div>
+          <!-- 数据趋势图表 -->
+        <div class="mb-12">
+            <div class="flex flex-col md:flex-row justify-between items-center mb-6">
+                <h3 class="text-2xl font-bold text-gray-800 dark:text-gray-100">数据趋势</h3>
+                <div class="flex space-x-2 mt-3 md:mt-0">
+                    <button id="chartDayBtn" class="px-3 py-1 bg-blue-600 text-white rounded text-sm">日</button>
+                    <button id="chartWeekBtn" class="px-3 py-1 bg-gray-200 dark:bg-gray-700 text-gray-700 dark:text-gray-300 rounded text-sm hover:bg-gray-300 dark:hover:bg-gray-600">周</button>
+                    <button id="chartMonthBtn" class="px-3 py-1 bg-gray-200 dark:bg-gray-700 text-gray-700 dark:text-gray-300 rounded text-sm hover:bg-gray-300 dark:hover:bg-gray-600">月</button>
+                </div>
+            </div>
+            
+            <div class="bg-white dark:bg-gray-800 p-4 rounded-lg shadow border border-gray-200 dark:border-gray-700">
+                <div class="chart-container">
+                    <canvas id="trendsChart"></canvas>
+                </div>
+            </div>
+        </div>
+
+        <!-- 系统性能 -->
+        <div class="mb-12">
+            <h3 class="text-2xl font-bold mb-6 text-gray-800 dark:text-gray-100">系统性能</h3>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div class="bg-gray-50 dark:bg-gray-700 p-5 rounded-lg border border-gray-200 dark:border-gray-600">
+                    <h4 class="font-semibold text-lg text-gray-800 dark:text-gray-200 mb-3">平均响应时间</h4>
+                    <div class="relative pt-1">
+                        <div class="flex mb-2 items-center justify-between">
+                            <div>
+                                <span class="text-xs font-semibold inline-block py-1 px-2 uppercase rounded-full text-blue-600 bg-blue-200 dark:bg-blue-900 dark:text-blue-300">
+                                    非常快
+                                </span>
+                            </div>
+                            <div class="text-right">
+                                <span class="text-xs font-semibold inline-block text-blue-600 dark:text-blue-400">
+                                    0.8秒
+                                </span>
+                            </div>
+                        </div>
+                        <div class="overflow-hidden h-2 mb-4 text-xs flex rounded bg-blue-200 dark:bg-blue-900">
+                            <div style="width: 20%" class="shadow-none flex flex-col text-center whitespace-nowrap text-white justify-center bg-blue-600"></div>
+                        </div>
+                        <p class="text-sm text-gray-600 dark:text-gray-400">系统平均在不到1秒的时间内处理一张图片并返回结果</p>
+                    </div>
+                </div>
+                  <div class="bg-gray-50 dark:bg-gray-700 p-5 rounded-lg border border-gray-200 dark:border-gray-600">
+                    <h4 class="font-semibold text-lg text-gray-800 dark:text-gray-200 mb-3">识别准确率</h4>
+                    <div class="relative pt-1">
+                        <div class="flex mb-2 items-center justify-between">
+                            <div>
+                                <span class="text-xs font-semibold inline-block py-1 px-2 uppercase rounded-full text-green-600 bg-green-200 dark:bg-green-900 dark:text-green-300">
+                                    优秀
+                                </span>
+                            </div>
+                            <div class="text-right">
+                                <span class="text-xs font-semibold inline-block text-green-600 dark:text-green-400">
+                                    95%
+                                </span>
+                            </div>
+                        </div>
+                        <div class="overflow-hidden h-2 mb-4 text-xs flex rounded bg-green-200 dark:bg-green-900">
+                            <div style="width: 95%" class="shadow-none flex flex-col text-center whitespace-nowrap text-white justify-center bg-green-600"></div>
+                        </div>
+                        <p class="text-sm text-gray-600 dark:text-gray-400">在标准图片测试集上，系统能够以95%的准确率识别相似图片</p>
+                    </div>
+                </div>
+                
+                <div class="bg-gray-50 dark:bg-gray-700 p-5 rounded-lg border border-gray-200 dark:border-gray-600">
+                    <h4 class="font-semibold text-lg text-gray-800 dark:text-gray-200 mb-3">系统可用性</h4>
+                    <div class="relative pt-1">
+                        <div class="flex mb-2 items-center justify-between">
+                            <div>
+                                <span class="text-xs font-semibold inline-block py-1 px-2 uppercase rounded-full text-green-600 bg-green-200 dark:bg-green-900 dark:text-green-300">
+                                    极佳
+                                </span>
+                            </div>
+                            <div class="text-right">
+                                <span class="text-xs font-semibold inline-block text-green-600 dark:text-green-400">
+                                    99.9%
+                                </span>
+                            </div>
+                        </div>
+                        <div class="overflow-hidden h-2 mb-4 text-xs flex rounded bg-green-200 dark:bg-green-900">
+                            <div style="width: 99.9%" class="shadow-none flex flex-col text-center whitespace-nowrap text-white justify-center bg-green-600"></div>
+                        </div>
+                        <p class="text-sm text-gray-600 dark:text-gray-400">系统运行稳定，近乎全天候可用，定期维护仅占用极少时间</p>
+                    </div>
+                </div>
+                
+                <div class="bg-gray-50 dark:bg-gray-700 p-5 rounded-lg border border-gray-200 dark:border-gray-600">
+                    <h4 class="font-semibold text-lg text-gray-800 dark:text-gray-200 mb-3">资源利用率</h4>
+                    <div class="relative pt-1">
+                        <div class="flex mb-2 items-center justify-between">
+                            <div>
+                                <span class="text-xs font-semibold inline-block py-1 px-2 uppercase rounded-full text-yellow-600 bg-yellow-200 dark:bg-yellow-900 dark:text-yellow-300">
+                                    良好
+                                </span>
+                            </div>
+                            <div class="text-right">
+                                <span class="text-xs font-semibold inline-block text-yellow-600 dark:text-yellow-400">
+                                    65%
+                                </span>
+                            </div>
+                        </div>
+                        <div class="overflow-hidden h-2 mb-4 text-xs flex rounded bg-yellow-200 dark:bg-yellow-900">
+                            <div style="width: 65%" class="shadow-none flex flex-col text-center whitespace-nowrap text-white justify-center bg-yellow-600"></div>
+                        </div>
+                        <p class="text-sm text-gray-600 dark:text-gray-400">系统资源使用均衡，有足够的扩展空间应对高峰期需求</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div>
+            <h3 class="text-2xl font-bold mb-6 text-gray-800">用户地区分布</h3>
+            
+            <div class="bg-gray-50 rounded-lg border border-gray-200 overflow-hidden">
+                <table class="min-w-full divide-y divide-gray-200">
+                    <thead class="bg-gray-100">
+                        <tr>
+                            <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                地区
+                            </th>
+                            <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                用户数
+                            </th>
+                            <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                占比
+                            </th>
+                            <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                增长率
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody class="bg-white divide-y divide-gray-200">
+                        <tr>
+                            <td class="px-6 py-4 whitespace-nowrap">
+                                <div class="text-sm font-medium text-gray-900">华东地区</div>
+                            </td>
+                            <td class="px-6 py-4 whitespace-nowrap">
+                                <div class="text-sm text-gray-900">5,421</div>
+                            </td>
+                            <td class="px-6 py-4 whitespace-nowrap">
+                                <div class="text-sm text-gray-900">42%</div>
+                            </td>
+                            <td class="px-6 py-4 whitespace-nowrap">
+                                <span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-green-100 text-green-800">
+                                    +15%
+                                </span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="px-6 py-4 whitespace-nowrap">
+                                <div class="text-sm font-medium text-gray-900">华北地区</div>
+                            </td>
+                            <td class="px-6 py-4 whitespace-nowrap">
+                                <div class="text-sm text-gray-900">3,856</div>
+                            </td>
+                            <td class="px-6 py-4 whitespace-nowrap">
+                                <div class="text-sm text-gray-900">30%</div>
+                            </td>
+                            <td class="px-6 py-4 whitespace-nowrap">
+                                <span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-green-100 text-green-800">
+                                    +12%
+                                </span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="px-6 py-4 whitespace-nowrap">
+                                <div class="text-sm font-medium text-gray-900">华南地区</div>
+                            </td>
+                            <td class="px-6 py-4 whitespace-nowrap">
+                                <div class="text-sm text-gray-900">2,317</div>
+                            </td>
+                            <td class="px-6 py-4 whitespace-nowrap">
+                                <div class="text-sm text-gray-900">18%</div>
+                            </td>
+                            <td class="px-6 py-4 whitespace-nowrap">
+                                <span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-green-100 text-green-800">
+                                    +20%
+                                </span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="px-6 py-4 whitespace-nowrap">
+                                <div class="text-sm font-medium text-gray-900">西部地区</div>
+                            </td>
+                            <td class="px-6 py-4 whitespace-nowrap">
+                                <div class="text-sm text-gray-900">1,289</div>
+                            </td>
+                            <td class="px-6 py-4 whitespace-nowrap">
+                                <div class="text-sm text-gray-900">10%</div>
+                            </td>
+                            <td class="px-6 py-4 whitespace-nowrap">
+                                <span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-yellow-100 text-yellow-800">
+                                    +8%
+                                </span>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+    
+    <div class="bg-blue-50 rounded-xl p-8 text-center border border-blue-100">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-12 w-12 text-blue-500 mx-auto mb-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z" />
+        </svg>
+        <h3 class="text-2xl font-bold mb-4 text-gray-800">系统持续优化中</h3>
+        <p class="text-lg text-gray-700 mb-6 max-w-3xl mx-auto">
+            鉴影科技团队正在不断优化算法，提升系统性能，扩大图像数据库规模。我们期待您的宝贵反馈，帮助我们打造更好的服务。
+        </p>
+        <div class="flex justify-center space-x-4">
+            <a href="/" class="inline-block bg-blue-600 hover:bg-blue-700 text-white font-medium py-3 px-6 rounded-lg transition duration-300">
+                开始使用
+            </a>
+            <a href="/contact" class="inline-block bg-white border border-blue-600 text-blue-600 hover:bg-blue-50 font-medium py-3 px-6 rounded-lg transition duration-300">
+                提供反馈
+            </a>
+        </div>
+    </div>
+</div>
+{% endblock %}

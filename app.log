@@ -58,3 +58,250 @@
 2025-06-12 14:45:44,823 - werkzeug - INFO - 127.0.0.1 - - [12/Jun/2025 14:45:44] "GET / HTTP/1.1" 200 -
 2025-06-12 14:45:45,082 - werkzeug - INFO - 127.0.0.1 - - [12/Jun/2025 14:45:45] "[33mGET /static/css/tailwind.css HTTP/1.1[0m" 404 -
 2025-06-12 14:45:45,157 - werkzeug - INFO - 127.0.0.1 - - [12/Jun/2025 14:45:45] "[36mGET /static/css/styles.css HTTP/1.1[0m" 304 -
+2025-06-12 15:16:22,173 - ¼øÓ°¿Æ¼¼ - INFO - ³õÊ¼»¯Í¼ÏñÊý¾Ý¿â...
+2025-06-12 15:16:22,174 - root - INFO - ¿ªÊ¼É¨ÃèÍ¼ÏñÄ¿Â¼: static\images
+2025-06-12 15:16:29,108 - root - INFO - É¨ÃèÍê³É£¬¹²Ìí¼ÓÁË 12 ÕÅÍ¼Æ¬µ½Êý¾Ý¿â
+2025-06-12 15:16:29,109 - ¼øÓ°¿Æ¼¼ - INFO - ÒÑ´Ó±¾µØÄ¿Â¼¼ÓÔØ 12 ÕÅÍ¼Æ¬
+2025-06-12 15:16:29,109 - ¼øÓ°¿Æ¼¼ - INFO - Êý¾Ý¿âÖÐ¹²ÓÐ 12 ÕÅÍ¼Æ¬
+2025-06-12 15:16:29,109 - ¼øÓ°¿Æ¼¼ - INFO - Êý¾Ý¿âÖÐµÄÍ¼Æ¬Â·¾¶Ê¾Àý: static\images\test\test_image_1.jpg
+2025-06-12 15:16:29,109 - ¼øÓ°¿Æ¼¼ - INFO - Æô¶¯Ó¦ÓÃ·þÎñÆ÷...
+2025-06-12 15:16:29,128 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5000
+ * Running on http://10.44.1.122:5000
+2025-06-12 15:16:29,128 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2025-06-12 15:16:29,129 - werkzeug - INFO -  * Restarting with stat
+2025-06-12 15:16:29,726 - ¼øÓ°¿Æ¼¼ - INFO - ³õÊ¼»¯Í¼ÏñÊý¾Ý¿â...
+2025-06-12 15:16:29,727 - root - INFO - ¿ªÊ¼É¨ÃèÍ¼ÏñÄ¿Â¼: static\images
+2025-06-12 15:16:36,503 - root - INFO - É¨ÃèÍê³É£¬¹²Ìí¼ÓÁË 12 ÕÅÍ¼Æ¬µ½Êý¾Ý¿â
+2025-06-12 15:16:36,504 - ¼øÓ°¿Æ¼¼ - INFO - ÒÑ´Ó±¾µØÄ¿Â¼¼ÓÔØ 12 ÕÅÍ¼Æ¬
+2025-06-12 15:16:36,504 - ¼øÓ°¿Æ¼¼ - INFO - Êý¾Ý¿âÖÐ¹²ÓÐ 12 ÕÅÍ¼Æ¬
+2025-06-12 15:16:36,504 - ¼øÓ°¿Æ¼¼ - INFO - Êý¾Ý¿âÖÐµÄÍ¼Æ¬Â·¾¶Ê¾Àý: static\images\test\test_image_1.jpg
+2025-06-12 15:16:36,504 - ¼øÓ°¿Æ¼¼ - INFO - Æô¶¯Ó¦ÓÃ·þÎñÆ÷...
+2025-06-12 15:16:36,511 - werkzeug - WARNING -  * Debugger is active!
+2025-06-12 15:16:36,519 - werkzeug - INFO -  * Debugger PIN: 589-906-772
+2025-06-12 15:16:36,539 - werkzeug - INFO - 127.0.0.1 - - [12/Jun/2025 15:16:36] "GET / HTTP/1.1" 200 -
+2025-06-12 15:16:36,578 - werkzeug - INFO - 127.0.0.1 - - [12/Jun/2025 15:16:36] "GET /static/css/enhanced.css HTTP/1.1" 200 -
+2025-06-12 15:16:36,888 - werkzeug - INFO - 127.0.0.1 - - [12/Jun/2025 15:16:36] "[33mGET /static/css/tailwind.css HTTP/1.1[0m" 404 -
+2025-06-12 15:16:36,889 - werkzeug - INFO - 127.0.0.1 - - [12/Jun/2025 15:16:36] "[36mGET /static/css/styles.css HTTP/1.1[0m" 304 -
+2025-06-12 15:16:36,891 - werkzeug - INFO - 127.0.0.1 - - [12/Jun/2025 15:16:36] "GET /static/css/darkmode.css HTTP/1.1" 200 -
+2025-06-12 15:16:37,237 - werkzeug - INFO - 127.0.0.1 - - [12/Jun/2025 15:16:37] "GET /static/js/app.js HTTP/1.1" 200 -
+2025-06-12 15:16:37,505 - werkzeug - INFO - 127.0.0.1 - - [12/Jun/2025 15:16:37] "GET /api/stats HTTP/1.1" 200 -
+2025-06-12 15:16:59,273 - werkzeug - INFO - 127.0.0.1 - - [12/Jun/2025 15:16:59] "GET /about HTTP/1.1" 200 -
+2025-06-12 15:16:59,608 - werkzeug - INFO - 127.0.0.1 - - [12/Jun/2025 15:16:59] "[36mGET /static/css/styles.css HTTP/1.1[0m" 304 -
+2025-06-12 15:16:59,609 - werkzeug - INFO - 127.0.0.1 - - [12/Jun/2025 15:16:59] "[33mGET /static/css/tailwind.css HTTP/1.1[0m" 404 -
+2025-06-12 15:16:59,611 - werkzeug - INFO - 127.0.0.1 - - [12/Jun/2025 15:16:59] "[36mGET /static/css/enhanced.css HTTP/1.1[0m" 304 -
+2025-06-12 15:16:59,613 - werkzeug - INFO - 127.0.0.1 - - [12/Jun/2025 15:16:59] "GET /static/images/test/test_image_1.jpg HTTP/1.1" 200 -
+2025-06-12 15:16:59,614 - werkzeug - INFO - 127.0.0.1 - - [12/Jun/2025 15:16:59] "[36mGET /static/css/darkmode.css HTTP/1.1[0m" 304 -
+2025-06-12 15:16:59,885 - werkzeug - INFO - 127.0.0.1 - - [12/Jun/2025 15:16:59] "[36mGET /static/js/app.js HTTP/1.1[0m" 304 -
+2025-06-12 15:17:04,177 - werkzeug - INFO - 127.0.0.1 - - [12/Jun/2025 15:17:04] "GET /gallery HTTP/1.1" 200 -
+2025-06-12 15:17:04,517 - werkzeug - INFO - 127.0.0.1 - - [12/Jun/2025 15:17:04] "[33mGET /static/css/tailwind.css HTTP/1.1[0m" 404 -
+2025-06-12 15:17:04,519 - werkzeug - INFO - 127.0.0.1 - - [12/Jun/2025 15:17:04] "[36mGET /static/css/styles.css HTTP/1.1[0m" 304 -
+2025-06-12 15:17:04,522 - werkzeug - INFO - 127.0.0.1 - - [12/Jun/2025 15:17:04] "[36mGET /static/css/enhanced.css HTTP/1.1[0m" 304 -
+2025-06-12 15:17:04,528 - werkzeug - INFO - 127.0.0.1 - - [12/Jun/2025 15:17:04] "[36mGET /static/css/darkmode.css HTTP/1.1[0m" 304 -
+2025-06-12 15:17:04,530 - werkzeug - INFO - 127.0.0.1 - - [12/Jun/2025 15:17:04] "[36mGET /static/js/app.js HTTP/1.1[0m" 304 -
+2025-06-12 15:17:04,765 - werkzeug - INFO - 127.0.0.1 - - [12/Jun/2025 15:17:04] "[33mGET /undefined HTTP/1.1[0m" 404 -
+2025-06-12 15:17:10,591 - werkzeug - INFO - 127.0.0.1 - - [12/Jun/2025 15:17:10] "GET /help HTTP/1.1" 200 -
+2025-06-12 15:17:10,925 - werkzeug - INFO - 127.0.0.1 - - [12/Jun/2025 15:17:10] "[33mGET /static/css/tailwind.css HTTP/1.1[0m" 404 -
+2025-06-12 15:17:10,927 - werkzeug - INFO - 127.0.0.1 - - [12/Jun/2025 15:17:10] "[36mGET /static/css/styles.css HTTP/1.1[0m" 304 -
+2025-06-12 15:17:10,928 - werkzeug - INFO - 127.0.0.1 - - [12/Jun/2025 15:17:10] "[36mGET /static/css/darkmode.css HTTP/1.1[0m" 304 -
+2025-06-12 15:17:10,929 - werkzeug - INFO - 127.0.0.1 - - [12/Jun/2025 15:17:10] "[36mGET /static/css/enhanced.css HTTP/1.1[0m" 304 -
+2025-06-12 15:17:10,931 - werkzeug - INFO - 127.0.0.1 - - [12/Jun/2025 15:17:10] "[36mGET /static/js/app.js HTTP/1.1[0m" 304 -
+2025-06-12 15:17:12,292 - werkzeug - INFO - 127.0.0.1 - - [12/Jun/2025 15:17:12] "GET /stats HTTP/1.1" 200 -
+2025-06-12 15:17:12,626 - werkzeug - INFO - 127.0.0.1 - - [12/Jun/2025 15:17:12] "[33mGET /static/css/tailwind.css HTTP/1.1[0m" 404 -
+2025-06-12 15:17:12,627 - werkzeug - INFO - 127.0.0.1 - - [12/Jun/2025 15:17:12] "[36mGET /static/css/styles.css HTTP/1.1[0m" 304 -
+2025-06-12 15:17:12,629 - werkzeug - INFO - 127.0.0.1 - - [12/Jun/2025 15:17:12] "[36mGET /static/css/enhanced.css HTTP/1.1[0m" 304 -
+2025-06-12 15:17:12,630 - werkzeug - INFO - 127.0.0.1 - - [12/Jun/2025 15:17:12] "[36mGET /static/css/darkmode.css HTTP/1.1[0m" 304 -
+2025-06-12 15:17:12,634 - werkzeug - INFO - 127.0.0.1 - - [12/Jun/2025 15:17:12] "[36mGET /static/js/app.js HTTP/1.1[0m" 304 -
+2025-06-12 15:17:13,737 - werkzeug - INFO - 127.0.0.1 - - [12/Jun/2025 15:17:13] "GET / HTTP/1.1" 200 -
+2025-06-12 15:17:14,071 - werkzeug - INFO - 127.0.0.1 - - [12/Jun/2025 15:17:14] "[33mGET /static/css/tailwind.css HTTP/1.1[0m" 404 -
+2025-06-12 15:17:14,074 - werkzeug - INFO - 127.0.0.1 - - [12/Jun/2025 15:17:14] "[36mGET /static/css/styles.css HTTP/1.1[0m" 304 -
+2025-06-12 15:17:14,076 - werkzeug - INFO - 127.0.0.1 - - [12/Jun/2025 15:17:14] "[36mGET /static/css/enhanced.css HTTP/1.1[0m" 304 -
+2025-06-12 15:17:14,078 - werkzeug - INFO - 127.0.0.1 - - [12/Jun/2025 15:17:14] "[36mGET /static/js/app.js HTTP/1.1[0m" 304 -
+2025-06-12 15:17:14,078 - werkzeug - INFO - 127.0.0.1 - - [12/Jun/2025 15:17:14] "[36mGET /static/css/darkmode.css HTTP/1.1[0m" 304 -
+2025-06-12 15:17:14,337 - werkzeug - INFO - 127.0.0.1 - - [12/Jun/2025 15:17:14] "GET /api/stats HTTP/1.1" 200 -
+2025-06-12 15:17:24,672 - werkzeug - INFO - 127.0.0.1 - - [12/Jun/2025 15:17:24] "GET / HTTP/1.1" 200 -
+2025-06-12 15:17:25,437 - werkzeug - INFO - 127.0.0.1 - - [12/Jun/2025 15:17:25] "GET /static/css/styles.css HTTP/1.1" 200 -
+2025-06-12 15:17:26,987 - werkzeug - INFO - 127.0.0.1 - - [12/Jun/2025 15:17:26] "GET /static/css/enhanced.css HTTP/1.1" 200 -
+2025-06-12 15:17:27,324 - werkzeug - INFO - 127.0.0.1 - - [12/Jun/2025 15:17:27] "[33mGET /static/css/tailwind.css HTTP/1.1[0m" 404 -
+2025-06-12 15:17:27,717 - werkzeug - INFO - 127.0.0.1 - - [12/Jun/2025 15:17:27] "GET /static/js/app.js HTTP/1.1" 200 -
+2025-06-12 15:17:28,026 - werkzeug - INFO - 127.0.0.1 - - [12/Jun/2025 15:17:28] "GET /static/css/darkmode.css HTTP/1.1" 200 -
+2025-06-12 15:17:28,715 - werkzeug - INFO - 127.0.0.1 - - [12/Jun/2025 15:17:28] "GET /api/stats HTTP/1.1" 200 -
+2025-06-12 15:17:29,058 - werkzeug - INFO - 127.0.0.1 - - [12/Jun/2025 15:17:29] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -
+2025-06-12 15:17:33,625 - werkzeug - INFO - 127.0.0.1 - - [12/Jun/2025 15:17:33] "GET /about HTTP/1.1" 200 -
+2025-06-12 15:17:34,389 - werkzeug - INFO - 127.0.0.1 - - [12/Jun/2025 15:17:34] "[33mGET /static/css/tailwind.css HTTP/1.1[0m" 404 -
+2025-06-12 15:17:34,704 - werkzeug - INFO - 127.0.0.1 - - [12/Jun/2025 15:17:34] "[36mGET /static/css/styles.css HTTP/1.1[0m" 304 -
+2025-06-12 15:17:35,052 - werkzeug - INFO - 127.0.0.1 - - [12/Jun/2025 15:17:35] "[36mGET /static/css/enhanced.css HTTP/1.1[0m" 304 -
+2025-06-12 15:17:35,445 - werkzeug - INFO - 127.0.0.1 - - [12/Jun/2025 15:17:35] "[36mGET /static/css/darkmode.css HTTP/1.1[0m" 304 -
+2025-06-12 15:17:35,777 - werkzeug - INFO - 127.0.0.1 - - [12/Jun/2025 15:17:35] "GET /static/images/test/test_image_1.jpg HTTP/1.1" 200 -
+2025-06-12 15:17:36,177 - werkzeug - INFO - 127.0.0.1 - - [12/Jun/2025 15:17:36] "[36mGET /static/js/app.js HTTP/1.1[0m" 304 -
+2025-06-12 15:18:02,368 - werkzeug - INFO - 127.0.0.1 - - [12/Jun/2025 15:18:02] "GET / HTTP/1.1" 200 -
+2025-06-12 15:18:02,978 - werkzeug - INFO - 127.0.0.1 - - [12/Jun/2025 15:18:02] "[33mGET /static/css/tailwind.css HTTP/1.1[0m" 404 -
+2025-06-12 15:18:03,419 - werkzeug - INFO - 127.0.0.1 - - [12/Jun/2025 15:18:03] "GET /static/css/styles.css HTTP/1.1" 200 -
+2025-06-12 15:18:03,734 - werkzeug - INFO - 127.0.0.1 - - [12/Jun/2025 15:18:03] "GET /static/css/enhanced.css HTTP/1.1" 200 -
+2025-06-12 15:18:04,036 - werkzeug - INFO - 127.0.0.1 - - [12/Jun/2025 15:18:04] "GET /static/js/app.js HTTP/1.1" 200 -
+2025-06-12 15:18:04,352 - werkzeug - INFO - 127.0.0.1 - - [12/Jun/2025 15:18:04] "GET /static/css/darkmode.css HTTP/1.1" 200 -
+2025-06-12 15:18:04,832 - werkzeug - INFO - 127.0.0.1 - - [12/Jun/2025 15:18:04] "GET /api/stats HTTP/1.1" 200 -
+2025-06-12 15:18:05,133 - werkzeug - INFO - 127.0.0.1 - - [12/Jun/2025 15:18:05] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -
+2025-06-12 15:18:07,085 - werkzeug - INFO - 127.0.0.1 - - [12/Jun/2025 15:18:07] "GET / HTTP/1.1" 200 -
+2025-06-12 15:18:07,612 - werkzeug - INFO - 127.0.0.1 - - [12/Jun/2025 15:18:07] "GET /static/css/styles.css HTTP/1.1" 200 -
+2025-06-12 15:18:07,927 - werkzeug - INFO - 127.0.0.1 - - [12/Jun/2025 15:18:07] "[33mGET /static/css/tailwind.css HTTP/1.1[0m" 404 -
+2025-06-12 15:18:08,288 - werkzeug - INFO - 127.0.0.1 - - [12/Jun/2025 15:18:08] "GET /static/css/enhanced.css HTTP/1.1" 200 -
+2025-06-12 15:18:08,648 - werkzeug - INFO - 127.0.0.1 - - [12/Jun/2025 15:18:08] "GET /static/css/darkmode.css HTTP/1.1" 200 -
+2025-06-12 15:18:09,039 - werkzeug - INFO - 127.0.0.1 - - [12/Jun/2025 15:18:09] "GET /static/js/app.js HTTP/1.1" 200 -
+2025-06-12 15:18:09,561 - werkzeug - INFO - 127.0.0.1 - - [12/Jun/2025 15:18:09] "GET /api/stats HTTP/1.1" 200 -
+2025-06-12 15:18:09,883 - werkzeug - INFO - 127.0.0.1 - - [12/Jun/2025 15:18:09] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -
+2025-06-12 15:18:14,377 - werkzeug - INFO - 127.0.0.1 - - [12/Jun/2025 15:18:14] "GET /help HTTP/1.1" 200 -
+2025-06-12 15:18:14,923 - werkzeug - INFO - 127.0.0.1 - - [12/Jun/2025 15:18:14] "[36mGET /static/css/darkmode.css HTTP/1.1[0m" 304 -
+2025-06-12 15:18:15,235 - werkzeug - INFO - 127.0.0.1 - - [12/Jun/2025 15:18:15] "[36mGET /static/css/styles.css HTTP/1.1[0m" 304 -
+2025-06-12 15:18:15,550 - werkzeug - INFO - 127.0.0.1 - - [12/Jun/2025 15:18:15] "[33mGET /static/css/tailwind.css HTTP/1.1[0m" 404 -
+2025-06-12 15:18:15,861 - werkzeug - INFO - 127.0.0.1 - - [12/Jun/2025 15:18:15] "[36mGET /static/css/enhanced.css HTTP/1.1[0m" 304 -
+2025-06-12 15:18:16,174 - werkzeug - INFO - 127.0.0.1 - - [12/Jun/2025 15:18:16] "[36mGET /static/js/app.js HTTP/1.1[0m" 304 -
+2025-06-12 15:18:31,392 - werkzeug - INFO - 127.0.0.1 - - [12/Jun/2025 15:18:31] "GET / HTTP/1.1" 200 -
+2025-06-12 15:18:32,494 - werkzeug - INFO - 127.0.0.1 - - [12/Jun/2025 15:18:32] "GET /static/js/app.js HTTP/1.1" 200 -
+2025-06-12 15:18:45,279 - werkzeug - INFO - 127.0.0.1 - - [12/Jun/2025 15:18:45] "POST /api/search HTTP/1.1" 200 -
+2025-06-12 15:18:45,740 - werkzeug - INFO - 127.0.0.1 - - [12/Jun/2025 15:18:45] "GET /static/images/test/test_image_12.jpg HTTP/1.1" 200 -
+2025-06-12 15:18:46,081 - werkzeug - INFO - 127.0.0.1 - - [12/Jun/2025 15:18:46] "GET /static/images/test/test_image_11.jpg HTTP/1.1" 200 -
+2025-06-12 15:18:46,394 - werkzeug - INFO - 127.0.0.1 - - [12/Jun/2025 15:18:46] "GET /static/images/test/test_image_6.jpg HTTP/1.1" 200 -
+2025-06-12 15:18:46,707 - werkzeug - INFO - 127.0.0.1 - - [12/Jun/2025 15:18:46] "GET /static/images/test/test_image_2.jpg HTTP/1.1" 200 -
+2025-06-12 15:18:47,078 - werkzeug - INFO - 127.0.0.1 - - [12/Jun/2025 15:18:47] "GET /static/images/test/test_image_4.jpg HTTP/1.1" 200 -
+2025-06-12 15:18:47,663 - werkzeug - INFO - 127.0.0.1 - - [12/Jun/2025 15:18:47] "GET /static/images/test/test_image_10.jpg HTTP/1.1" 200 -
+2025-06-12 15:18:48,013 - werkzeug - INFO - 127.0.0.1 - - [12/Jun/2025 15:18:48] "GET /static/images/test/test_image_8.jpg HTTP/1.1" 200 -
+2025-06-12 15:18:48,397 - werkzeug - INFO - 127.0.0.1 - - [12/Jun/2025 15:18:48] "GET /static/images/test/test_image_9.jpg HTTP/1.1" 200 -
+2025-06-12 15:18:48,707 - werkzeug - INFO - 127.0.0.1 - - [12/Jun/2025 15:18:48] "GET /static/images/test/test_image_3.jpg HTTP/1.1" 200 -
+2025-06-12 15:18:51,229 - werkzeug - INFO - 127.0.0.1 - - [12/Jun/2025 15:18:51] "GET /static/images/test/test_image_12.jpg HTTP/1.1" 200 -
+2025-06-12 15:19:11,445 - werkzeug - INFO - 127.0.0.1 - - [12/Jun/2025 15:19:11] "GET /about HTTP/1.1" 200 -
+2025-06-12 15:19:11,887 - werkzeug - INFO - 127.0.0.1 - - [12/Jun/2025 15:19:11] "GET /static/images/test/test_image_1.jpg HTTP/1.1" 200 -
+2025-06-12 15:19:12,194 - werkzeug - INFO - 127.0.0.1 - - [12/Jun/2025 15:19:12] "[33mGET /static/css/tailwind.css HTTP/1.1[0m" 404 -
+2025-06-12 15:19:12,497 - werkzeug - INFO - 127.0.0.1 - - [12/Jun/2025 15:19:12] "[36mGET /static/css/darkmode.css HTTP/1.1[0m" 304 -
+2025-06-12 15:19:12,814 - werkzeug - INFO - 127.0.0.1 - - [12/Jun/2025 15:19:12] "[36mGET /static/css/styles.css HTTP/1.1[0m" 304 -
+2025-06-12 15:19:13,122 - werkzeug - INFO - 127.0.0.1 - - [12/Jun/2025 15:19:13] "[36mGET /static/css/enhanced.css HTTP/1.1[0m" 304 -
+2025-06-12 15:19:13,672 - werkzeug - INFO - 127.0.0.1 - - [12/Jun/2025 15:19:13] "[36mGET /static/js/app.js HTTP/1.1[0m" 304 -
+2025-06-12 15:22:16,900 - werkzeug - INFO - 127.0.0.1 - - [12/Jun/2025 15:22:16] "GET /gallery HTTP/1.1" 200 -
+2025-06-12 15:22:17,162 - werkzeug - INFO - 127.0.0.1 - - [12/Jun/2025 15:22:17] "[33mGET /static/css/tailwind.css HTTP/1.1[0m" 404 -
+2025-06-12 15:22:17,248 - werkzeug - INFO - 127.0.0.1 - - [12/Jun/2025 15:22:17] "[36mGET /static/css/enhanced.css HTTP/1.1[0m" 304 -
+2025-06-12 15:22:17,252 - werkzeug - INFO - 127.0.0.1 - - [12/Jun/2025 15:22:17] "[36mGET /static/css/styles.css HTTP/1.1[0m" 304 -
+2025-06-12 15:22:17,252 - werkzeug - INFO - 127.0.0.1 - - [12/Jun/2025 15:22:17] "[36mGET /static/css/darkmode.css HTTP/1.1[0m" 304 -
+2025-06-12 15:22:17,405 - werkzeug - INFO - 127.0.0.1 - - [12/Jun/2025 15:22:17] "[36mGET /static/js/app.js HTTP/1.1[0m" 304 -
+2025-06-12 15:22:17,453 - werkzeug - INFO - 127.0.0.1 - - [12/Jun/2025 15:22:17] "[33mGET /undefined HTTP/1.1[0m" 404 -
+2025-06-12 15:22:45,378 - werkzeug - INFO - 127.0.0.1 - - [12/Jun/2025 15:22:45] "GET /help HTTP/1.1" 200 -
+2025-06-12 15:22:45,636 - werkzeug - INFO - 127.0.0.1 - - [12/Jun/2025 15:22:45] "[33mGET /static/css/tailwind.css HTTP/1.1[0m" 404 -
+2025-06-12 15:22:45,719 - werkzeug - INFO - 127.0.0.1 - - [12/Jun/2025 15:22:45] "[36mGET /static/css/darkmode.css HTTP/1.1[0m" 304 -
+2025-06-12 15:22:45,719 - werkzeug - INFO - 127.0.0.1 - - [12/Jun/2025 15:22:45] "[36mGET /static/css/styles.css HTTP/1.1[0m" 304 -
+2025-06-12 15:22:45,719 - werkzeug - INFO - 127.0.0.1 - - [12/Jun/2025 15:22:45] "[36mGET /static/js/app.js HTTP/1.1[0m" 304 -
+2025-06-12 15:22:45,719 - werkzeug - INFO - 127.0.0.1 - - [12/Jun/2025 15:22:45] "[36mGET /static/css/enhanced.css HTTP/1.1[0m" 304 -
+2025-06-12 15:23:06,155 - werkzeug - INFO - 127.0.0.1 - - [12/Jun/2025 15:23:06] "GET /stats HTTP/1.1" 200 -
+2025-06-12 15:23:06,485 - werkzeug - INFO - 127.0.0.1 - - [12/Jun/2025 15:23:06] "[33mGET /static/css/tailwind.css HTTP/1.1[0m" 404 -
+2025-06-12 15:23:06,485 - werkzeug - INFO - 127.0.0.1 - - [12/Jun/2025 15:23:06] "[36mGET /static/css/styles.css HTTP/1.1[0m" 304 -
+2025-06-12 15:23:06,485 - werkzeug - INFO - 127.0.0.1 - - [12/Jun/2025 15:23:06] "[36mGET /static/css/enhanced.css HTTP/1.1[0m" 304 -
+2025-06-12 15:23:06,485 - werkzeug - INFO - 127.0.0.1 - - [12/Jun/2025 15:23:06] "[36mGET /static/css/darkmode.css HTTP/1.1[0m" 304 -
+2025-06-12 15:23:06,492 - werkzeug - INFO - 127.0.0.1 - - [12/Jun/2025 15:23:06] "[36mGET /static/js/app.js HTTP/1.1[0m" 304 -
+2025-06-12 15:23:29,753 - werkzeug - INFO - 127.0.0.1 - - [12/Jun/2025 15:23:29] "GET / HTTP/1.1" 200 -
+2025-06-12 15:23:30,084 - werkzeug - INFO - 127.0.0.1 - - [12/Jun/2025 15:23:30] "[33mGET /static/css/tailwind.css HTTP/1.1[0m" 404 -
+2025-06-12 15:23:30,084 - werkzeug - INFO - 127.0.0.1 - - [12/Jun/2025 15:23:30] "[36mGET /static/css/styles.css HTTP/1.1[0m" 304 -
+2025-06-12 15:23:30,092 - werkzeug - INFO - 127.0.0.1 - - [12/Jun/2025 15:23:30] "[36mGET /static/css/enhanced.css HTTP/1.1[0m" 304 -
+2025-06-12 15:23:30,092 - werkzeug - INFO - 127.0.0.1 - - [12/Jun/2025 15:23:30] "[36mGET /static/css/darkmode.css HTTP/1.1[0m" 304 -
+2025-06-12 15:23:30,092 - werkzeug - INFO - 127.0.0.1 - - [12/Jun/2025 15:23:30] "[36mGET /static/js/app.js HTTP/1.1[0m" 304 -
+2025-06-12 15:23:30,339 - werkzeug - INFO - 127.0.0.1 - - [12/Jun/2025 15:23:30] "GET /api/stats HTTP/1.1" 200 -
+2025-06-12 15:24:47,461 - werkzeug - INFO - 127.0.0.1 - - [12/Jun/2025 15:24:47] "GET / HTTP/1.1" 200 -
+2025-06-12 15:24:47,725 - werkzeug - INFO - 127.0.0.1 - - [12/Jun/2025 15:24:47] "[33mGET /static/css/tailwind.css HTTP/1.1[0m" 404 -
+2025-06-12 15:24:47,792 - werkzeug - INFO - 127.0.0.1 - - [12/Jun/2025 15:24:47] "[36mGET /static/css/styles.css HTTP/1.1[0m" 304 -
+2025-06-12 15:24:47,792 - werkzeug - INFO - 127.0.0.1 - - [12/Jun/2025 15:24:47] "[36mGET /static/css/enhanced.css HTTP/1.1[0m" 304 -
+2025-06-12 15:24:47,792 - werkzeug - INFO - 127.0.0.1 - - [12/Jun/2025 15:24:47] "[36mGET /static/css/darkmode.css HTTP/1.1[0m" 304 -
+2025-06-12 15:24:47,792 - werkzeug - INFO - 127.0.0.1 - - [12/Jun/2025 15:24:47] "[36mGET /static/js/app.js HTTP/1.1[0m" 304 -
+2025-06-12 15:24:47,853 - werkzeug - INFO - 127.0.0.1 - - [12/Jun/2025 15:24:47] "GET /api/stats HTTP/1.1" 200 -
+2025-06-12 15:24:51,226 - werkzeug - INFO - 127.0.0.1 - - [12/Jun/2025 15:24:51] "GET /gallery HTTP/1.1" 200 -
+2025-06-12 15:24:51,475 - werkzeug - INFO - 127.0.0.1 - - [12/Jun/2025 15:24:51] "[33mGET /static/css/tailwind.css HTTP/1.1[0m" 404 -
+2025-06-12 15:24:51,558 - werkzeug - INFO - 127.0.0.1 - - [12/Jun/2025 15:24:51] "[36mGET /static/css/enhanced.css HTTP/1.1[0m" 304 -
+2025-06-12 15:24:51,558 - werkzeug - INFO - 127.0.0.1 - - [12/Jun/2025 15:24:51] "[36mGET /static/css/darkmode.css HTTP/1.1[0m" 304 -
+2025-06-12 15:24:51,558 - werkzeug - INFO - 127.0.0.1 - - [12/Jun/2025 15:24:51] "[36mGET /static/css/styles.css HTTP/1.1[0m" 304 -
+2025-06-12 15:24:51,592 - werkzeug - INFO - 127.0.0.1 - - [12/Jun/2025 15:24:51] "[36mGET /static/js/app.js HTTP/1.1[0m" 304 -
+2025-06-12 15:24:51,648 - werkzeug - INFO - 127.0.0.1 - - [12/Jun/2025 15:24:51] "[33mGET /static/static%5Cimages%5Ctest%5Ctest_image_1.jpg HTTP/1.1[0m" 404 -
+2025-06-12 15:24:51,959 - werkzeug - INFO - 127.0.0.1 - - [12/Jun/2025 15:24:51] "[33mGET /undefined HTTP/1.1[0m" 404 -
+2025-06-12 15:25:49,080 - werkzeug - INFO - 127.0.0.1 - - [12/Jun/2025 15:25:49] "GET / HTTP/1.1" 200 -
+2025-06-12 15:25:49,425 - werkzeug - INFO - 127.0.0.1 - - [12/Jun/2025 15:25:49] "[33mGET /static/css/tailwind.css HTTP/1.1[0m" 404 -
+2025-06-12 15:25:49,428 - werkzeug - INFO - 127.0.0.1 - - [12/Jun/2025 15:25:49] "[36mGET /static/css/styles.css HTTP/1.1[0m" 304 -
+2025-06-12 15:25:49,428 - werkzeug - INFO - 127.0.0.1 - - [12/Jun/2025 15:25:49] "[36mGET /static/css/enhanced.css HTTP/1.1[0m" 304 -
+2025-06-12 15:25:49,428 - werkzeug - INFO - 127.0.0.1 - - [12/Jun/2025 15:25:49] "[36mGET /static/css/darkmode.css HTTP/1.1[0m" 304 -
+2025-06-12 15:25:49,428 - werkzeug - INFO - 127.0.0.1 - - [12/Jun/2025 15:25:49] "GET /static/js/app.js HTTP/1.1" 200 -
+2025-06-12 15:27:15,377 - werkzeug - INFO -  * Detected change in 'C:\\Users\\coper\\Desktop\\ÏàËÆ¶È¼ì²â\\main.py', reloading
+2025-06-12 15:27:15,420 - werkzeug - INFO -  * Restarting with stat
+2025-06-12 15:27:15,974 - ¼øÓ°¿Æ¼¼ - INFO - ³õÊ¼»¯Í¼ÏñÊý¾Ý¿â...
+2025-06-12 15:27:15,974 - root - INFO - ¿ªÊ¼É¨ÃèÍ¼ÏñÄ¿Â¼: static\images
+2025-06-12 15:27:22,611 - root - INFO - É¨ÃèÍê³É£¬¹²Ìí¼ÓÁË 12 ÕÅÍ¼Æ¬µ½Êý¾Ý¿â
+2025-06-12 15:27:22,626 - ¼øÓ°¿Æ¼¼ - INFO - ÒÑ´Ó±¾µØÄ¿Â¼¼ÓÔØ 12 ÕÅÍ¼Æ¬
+2025-06-12 15:27:22,627 - ¼øÓ°¿Æ¼¼ - INFO - Êý¾Ý¿âÖÐ¹²ÓÐ 12 ÕÅÍ¼Æ¬
+2025-06-12 15:27:22,627 - ¼øÓ°¿Æ¼¼ - INFO - Êý¾Ý¿âÖÐµÄÍ¼Æ¬Â·¾¶Ê¾Àý: static\images\test\test_image_1.jpg
+2025-06-12 15:27:22,627 - ¼øÓ°¿Æ¼¼ - INFO - Æô¶¯Ó¦ÓÃ·þÎñÆ÷...
+2025-06-12 15:27:22,627 - werkzeug - WARNING -  * Debugger is active!
+2025-06-12 15:27:22,638 - werkzeug - INFO -  * Debugger PIN: 589-906-772
+2025-06-12 15:27:28,096 - werkzeug - INFO - 127.0.0.1 - - [12/Jun/2025 15:27:28] "GET / HTTP/1.1" 200 -
+2025-06-12 15:27:28,338 - werkzeug - INFO - 127.0.0.1 - - [12/Jun/2025 15:27:28] "[33mGET /static/css/tailwind.css HTTP/1.1[0m" 404 -
+2025-06-12 15:27:28,421 - werkzeug - INFO - 127.0.0.1 - - [12/Jun/2025 15:27:28] "GET /static/css/enhanced.css HTTP/1.1" 200 -
+2025-06-12 15:27:28,421 - werkzeug - INFO - 127.0.0.1 - - [12/Jun/2025 15:27:28] "[36mGET /static/css/styles.css HTTP/1.1[0m" 304 -
+2025-06-12 15:27:28,421 - werkzeug - INFO - 127.0.0.1 - - [12/Jun/2025 15:27:28] "GET /static/css/darkmode.css HTTP/1.1" 200 -
+2025-06-12 15:27:28,421 - werkzeug - INFO - 127.0.0.1 - - [12/Jun/2025 15:27:28] "GET /static/js/app.js HTTP/1.1" 200 -
+2025-06-12 15:27:29,593 - werkzeug - INFO - 127.0.0.1 - - [12/Jun/2025 15:27:29] "GET / HTTP/1.1" 200 -
+2025-06-12 15:27:29,922 - werkzeug - INFO - 127.0.0.1 - - [12/Jun/2025 15:27:29] "[36mGET /static/css/enhanced.css HTTP/1.1[0m" 304 -
+2025-06-12 15:27:29,922 - werkzeug - INFO - 127.0.0.1 - - [12/Jun/2025 15:27:29] "[33mGET /static/css/tailwind.css HTTP/1.1[0m" 404 -
+2025-06-12 15:27:29,929 - werkzeug - INFO - 127.0.0.1 - - [12/Jun/2025 15:27:29] "[36mGET /static/css/styles.css HTTP/1.1[0m" 304 -
+2025-06-12 15:27:29,929 - werkzeug - INFO - 127.0.0.1 - - [12/Jun/2025 15:27:29] "[36mGET /static/css/darkmode.css HTTP/1.1[0m" 304 -
+2025-06-12 15:27:29,929 - werkzeug - INFO - 127.0.0.1 - - [12/Jun/2025 15:27:29] "[36mGET /static/js/app.js HTTP/1.1[0m" 304 -
+2025-06-12 15:27:31,788 - werkzeug - INFO - 127.0.0.1 - - [12/Jun/2025 15:27:31] "GET /about HTTP/1.1" 200 -
+2025-06-12 15:27:32,127 - werkzeug - INFO - 127.0.0.1 - - [12/Jun/2025 15:27:32] "[33mGET /static/css/tailwind.css HTTP/1.1[0m" 404 -
+2025-06-12 15:27:32,127 - werkzeug - INFO - 127.0.0.1 - - [12/Jun/2025 15:27:32] "[36mGET /static/css/styles.css HTTP/1.1[0m" 304 -
+2025-06-12 15:27:32,135 - werkzeug - INFO - 127.0.0.1 - - [12/Jun/2025 15:27:32] "[36mGET /static/css/enhanced.css HTTP/1.1[0m" 304 -
+2025-06-12 15:27:32,379 - werkzeug - INFO - 127.0.0.1 - - [12/Jun/2025 15:27:32] "[36mGET /static/images/test/test_image_1.jpg HTTP/1.1[0m" 304 -
+2025-06-12 15:27:32,445 - werkzeug - INFO - 127.0.0.1 - - [12/Jun/2025 15:27:32] "[36mGET /static/css/darkmode.css HTTP/1.1[0m" 304 -
+2025-06-12 15:27:32,445 - werkzeug - INFO - 127.0.0.1 - - [12/Jun/2025 15:27:32] "[36mGET /static/js/app.js HTTP/1.1[0m" 304 -
+2025-06-12 15:27:35,989 - werkzeug - INFO - 127.0.0.1 - - [12/Jun/2025 15:27:35] "GET /gallery HTTP/1.1" 200 -
+2025-06-12 15:27:36,326 - werkzeug - INFO - 127.0.0.1 - - [12/Jun/2025 15:27:36] "[36mGET /static/css/styles.css HTTP/1.1[0m" 304 -
+2025-06-12 15:27:36,326 - werkzeug - INFO - 127.0.0.1 - - [12/Jun/2025 15:27:36] "[33mGET /static/css/tailwind.css HTTP/1.1[0m" 404 -
+2025-06-12 15:27:36,326 - werkzeug - INFO - 127.0.0.1 - - [12/Jun/2025 15:27:36] "[36mGET /static/css/enhanced.css HTTP/1.1[0m" 304 -
+2025-06-12 15:27:36,347 - werkzeug - INFO - 127.0.0.1 - - [12/Jun/2025 15:27:36] "[36mGET /static/js/app.js HTTP/1.1[0m" 304 -
+2025-06-12 15:27:36,351 - werkzeug - INFO - 127.0.0.1 - - [12/Jun/2025 15:27:36] "[36mGET /static/css/darkmode.css HTTP/1.1[0m" 304 -
+2025-06-12 15:27:36,583 - werkzeug - INFO - 127.0.0.1 - - [12/Jun/2025 15:27:36] "[33mGET /static/static%5Cimages%5Ctest%5Ctest_image_1.jpg HTTP/1.1[0m" 404 -
+2025-06-12 15:27:36,739 - werkzeug - INFO - 127.0.0.1 - - [12/Jun/2025 15:27:36] "[33mGET /static/static%5Cimages%5Ctest%5Ctest_image_11.jpg HTTP/1.1[0m" 404 -
+2025-06-12 15:27:36,739 - werkzeug - INFO - 127.0.0.1 - - [12/Jun/2025 15:27:36] "[33mGET /static/static%5Cimages%5Ctest%5Ctest_image_10.jpg HTTP/1.1[0m" 404 -
+2025-06-12 15:27:36,739 - werkzeug - INFO - 127.0.0.1 - - [12/Jun/2025 15:27:36] "[33mGET /static/static%5Cimages%5Ctest%5Ctest_image_12.jpg HTTP/1.1[0m" 404 -
+2025-06-12 15:27:36,739 - werkzeug - INFO - 127.0.0.1 - - [12/Jun/2025 15:27:36] "[33mGET /static/static%5Cimages%5Ctest%5Ctest_image_2.jpg HTTP/1.1[0m" 404 -
+2025-06-12 15:27:36,739 - werkzeug - INFO - 127.0.0.1 - - [12/Jun/2025 15:27:36] "[33mGET /static/static%5Cimages%5Ctest%5Ctest_image_3.jpg HTTP/1.1[0m" 404 -
+2025-06-12 15:27:36,898 - werkzeug - INFO - 127.0.0.1 - - [12/Jun/2025 15:27:36] "[33mGET /static/static%5Cimages%5Ctest%5Ctest_image_4.jpg HTTP/1.1[0m" 404 -
+2025-06-12 15:27:37,056 - werkzeug - INFO - 127.0.0.1 - - [12/Jun/2025 15:27:37] "[33mGET /static/static%5Cimages%5Ctest%5Ctest_image_7.jpg HTTP/1.1[0m" 404 -
+2025-06-12 15:27:37,056 - werkzeug - INFO - 127.0.0.1 - - [12/Jun/2025 15:27:37] "[33mGET /static/static%5Cimages%5Ctest%5Ctest_image_5.jpg HTTP/1.1[0m" 404 -
+2025-06-12 15:27:37,056 - werkzeug - INFO - 127.0.0.1 - - [12/Jun/2025 15:27:37] "[33mGET /static/static%5Cimages%5Ctest%5Ctest_image_6.jpg HTTP/1.1[0m" 404 -
+2025-06-12 15:27:37,056 - werkzeug - INFO - 127.0.0.1 - - [12/Jun/2025 15:27:37] "[33mGET /static/static%5Cimages%5Ctest%5Ctest_image_8.jpg HTTP/1.1[0m" 404 -
+2025-06-12 15:27:37,056 - werkzeug - INFO - 127.0.0.1 - - [12/Jun/2025 15:27:37] "[33mGET /static/static%5Cimages%5Ctest%5Ctest_image_9.jpg HTTP/1.1[0m" 404 -
+2025-06-12 15:27:41,450 - werkzeug - INFO - 127.0.0.1 - - [12/Jun/2025 15:27:41] "GET /help HTTP/1.1" 200 -
+2025-06-12 15:27:41,710 - werkzeug - INFO - 127.0.0.1 - - [12/Jun/2025 15:27:41] "[33mGET /static/css/tailwind.css HTTP/1.1[0m" 404 -
+2025-06-12 15:27:41,789 - werkzeug - INFO - 127.0.0.1 - - [12/Jun/2025 15:27:41] "[36mGET /static/css/styles.css HTTP/1.1[0m" 304 -
+2025-06-12 15:27:41,791 - werkzeug - INFO - 127.0.0.1 - - [12/Jun/2025 15:27:41] "[36mGET /static/css/enhanced.css HTTP/1.1[0m" 304 -
+2025-06-12 15:27:41,791 - werkzeug - INFO - 127.0.0.1 - - [12/Jun/2025 15:27:41] "[36mGET /static/css/darkmode.css HTTP/1.1[0m" 304 -
+2025-06-12 15:27:41,791 - werkzeug - INFO - 127.0.0.1 - - [12/Jun/2025 15:27:41] "[36mGET /static/js/app.js HTTP/1.1[0m" 304 -
+2025-06-12 15:27:45,726 - werkzeug - INFO - 127.0.0.1 - - [12/Jun/2025 15:27:45] "GET /contact HTTP/1.1" 200 -
+2025-06-12 15:27:46,064 - werkzeug - INFO - 127.0.0.1 - - [12/Jun/2025 15:27:46] "[36mGET /static/css/styles.css HTTP/1.1[0m" 304 -
+2025-06-12 15:27:46,064 - werkzeug - INFO - 127.0.0.1 - - [12/Jun/2025 15:27:46] "[33mGET /static/css/tailwind.css HTTP/1.1[0m" 404 -
+2025-06-12 15:27:46,064 - werkzeug - INFO - 127.0.0.1 - - [12/Jun/2025 15:27:46] "[36mGET /static/css/enhanced.css HTTP/1.1[0m" 304 -
+2025-06-12 15:27:46,068 - werkzeug - INFO - 127.0.0.1 - - [12/Jun/2025 15:27:46] "[36mGET /static/css/darkmode.css HTTP/1.1[0m" 304 -
+2025-06-12 15:27:46,068 - werkzeug - INFO - 127.0.0.1 - - [12/Jun/2025 15:27:46] "[36mGET /static/js/app.js HTTP/1.1[0m" 304 -
+2025-06-12 15:28:01,760 - werkzeug - INFO - 127.0.0.1 - - [12/Jun/2025 15:28:01] "GET / HTTP/1.1" 200 -
+2025-06-12 15:28:02,090 - werkzeug - INFO - 127.0.0.1 - - [12/Jun/2025 15:28:02] "[33mGET /static/css/tailwind.css HTTP/1.1[0m" 404 -
+2025-06-12 15:28:02,090 - werkzeug - INFO - 127.0.0.1 - - [12/Jun/2025 15:28:02] "[36mGET /static/css/styles.css HTTP/1.1[0m" 304 -
+2025-06-12 15:28:02,090 - werkzeug - INFO - 127.0.0.1 - - [12/Jun/2025 15:28:02] "[36mGET /static/css/enhanced.css HTTP/1.1[0m" 304 -
+2025-06-12 15:28:02,097 - werkzeug - INFO - 127.0.0.1 - - [12/Jun/2025 15:28:02] "[36mGET /static/js/app.js HTTP/1.1[0m" 304 -
+2025-06-12 15:28:02,097 - werkzeug - INFO - 127.0.0.1 - - [12/Jun/2025 15:28:02] "[36mGET /static/css/darkmode.css HTTP/1.1[0m" 304 -
+2025-06-12 15:29:03,678 - ¼øÓ°¿Æ¼¼ - INFO - ³õÊ¼»¯Í¼ÏñÊý¾Ý¿â...
+2025-06-12 15:29:03,678 - root - INFO - ¿ªÊ¼É¨ÃèÍ¼ÏñÄ¿Â¼: static\images
+2025-06-12 15:29:10,287 - root - INFO - É¨ÃèÍê³É£¬¹²Ìí¼ÓÁË 12 ÕÅÍ¼Æ¬µ½Êý¾Ý¿â
+2025-06-12 15:29:10,287 - ¼øÓ°¿Æ¼¼ - INFO - ÒÑ´Ó±¾µØÄ¿Â¼¼ÓÔØ 12 ÕÅÍ¼Æ¬
+2025-06-12 15:29:10,287 - ¼øÓ°¿Æ¼¼ - INFO - Êý¾Ý¿âÖÐ¹²ÓÐ 12 ÕÅÍ¼Æ¬
+2025-06-12 15:29:10,287 - ¼øÓ°¿Æ¼¼ - INFO - Êý¾Ý¿âÖÐµÄÍ¼Æ¬Â·¾¶Ê¾Àý: static\images\test\test_image_1.jpg
+2025-06-12 15:29:10,287 - ¼øÓ°¿Æ¼¼ - INFO - Æô¶¯Ó¦ÓÃ·þÎñÆ÷...
+2025-06-12 15:29:10,309 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5000
+ * Running on http://10.44.1.122:5000
+2025-06-12 15:29:10,312 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2025-06-12 15:29:10,312 - werkzeug - INFO -  * Restarting with stat
+2025-06-12 15:29:10,844 - ¼øÓ°¿Æ¼¼ - INFO - ³õÊ¼»¯Í¼ÏñÊý¾Ý¿â...
+2025-06-12 15:29:10,844 - root - INFO - ¿ªÊ¼É¨ÃèÍ¼ÏñÄ¿Â¼: static\images

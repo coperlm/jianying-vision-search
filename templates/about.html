@@ -1,0 +1,164 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="max-w-5xl mx-auto">
+    <div class="bg-white rounded-xl shadow-lg p-8 mb-10">
+        <h2 class="text-3xl font-bold mb-8 text-center text-gray-800">关于鉴影科技</h2>
+        
+        <div class="mb-10">
+            <div class="flex flex-col md:flex-row items-center md:items-start mb-8">
+                <div class="w-full md:w-1/3 mb-6 md:mb-0 md:mr-8">
+                    <div class="bg-gradient-to-br from-blue-500 to-indigo-600 p-2 rounded-lg shadow-lg">
+                        <img src="{{ url_for('static', filename='images/test/test_image_1.jpg') }}" alt="鉴影科技团队" class="w-full h-auto rounded-md">
+                    </div>
+                </div>
+                <div class="w-full md:w-2/3">
+                    <h3 class="text-2xl font-bold mb-4 text-gray-800">我们的愿景</h3>
+                    <p class="text-lg text-gray-700 mb-4">
+                        鉴影科技致力于成为图像识别领域的领导者，通过先进的人工智能技术为创作者保护知识产权，为用户提供高效的图像搜索解决方案。
+                    </p>
+                    <p class="text-lg text-gray-700">
+                        我们相信，每一张图片都包含独特价值，每一位创作者的努力都应当得到尊重与保护。鉴影科技正是为此而生，守护原创，促进创新。
+                    </p>
+                </div>
+            </div>
+        </div>
+        
+        <div class="mb-10">
+            <h3 class="text-2xl font-bold mb-6 text-gray-800">我们的技术</h3>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <div class="bg-blue-50 p-6 rounded-lg border border-blue-100">
+                    <div class="flex items-center mb-4">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-blue-600 mr-3" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 3v2m6-2v2M9 19v2m6-2v2M5 9H3m2 6H3m18-6h-2m2 6h-2M7 19h10a2 2 0 002-2V7a2 2 0 00-2-2H7a2 2 0 00-2 2v10a2 2 0 002 2zM9 9h6v6H9V9z" />
+                        </svg>
+                        <h4 class="text-xl font-semibold text-gray-800">计算机视觉算法</h4>
+                    </div>
+                    <p class="text-gray-700">
+                        我们的核心技术基于最新的计算机视觉算法，能够提取图像的多维特征，包括颜色分布、纹理特征、边缘特征和空间结构，从而实现精准的相似度计算。
+                    </p>
+                </div>
+                <div class="bg-indigo-50 p-6 rounded-lg border border-indigo-100">
+                    <div class="flex items-center mb-4">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-indigo-600 mr-3" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4" />
+                        </svg>
+                        <h4 class="text-xl font-semibold text-gray-800">深度学习模型</h4>
+                    </div>
+                    <p class="text-gray-700">
+                        我们采用最先进的深度学习模型，包括卷积神经网络和自注意力机制，不断学习和优化图像特征提取能力，使相似图片搜索更加精准高效。
+                    </p>
+                </div>
+                <div class="bg-green-50 p-6 rounded-lg border border-green-100">
+                    <div class="flex items-center mb-4">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-green-600 mr-3" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
+                        </svg>
+                        <h4 class="text-xl font-semibold text-gray-800">水印检测</h4>
+                    </div>
+                    <p class="text-gray-700">
+                        我们的系统能够智能识别和处理图片中的水印，即使在有水印遮挡的情况下，也能准确识别原始图像，有效防止简单修改规避监测的行为。
+                    </p>
+                </div>
+                <div class="bg-purple-50 p-6 rounded-lg border border-purple-100">
+                    <div class="flex items-center mb-4">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-purple-600 mr-3" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20 15v4a2 2 0 01-2 2H6a2 2 0 01-2-2v-4m16-4l-8-8-8 8" />
+                        </svg>
+                        <h4 class="text-xl font-semibold text-gray-800">高效索引系统</h4>
+                    </div>
+                    <p class="text-gray-700">
+                        我们设计了专用的高维特征索引系统，即使在海量图库中也能快速定位相似图像，搜索速度比传统方法提升数十倍，保证用户体验。
+                    </p>
+                </div>
+            </div>
+        </div>
+        
+        <div class="mb-10">
+            <h3 class="text-2xl font-bold mb-6 text-gray-800">技术团队</h3>
+            <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
+                <div class="bg-white border border-gray-200 rounded-lg overflow-hidden shadow-sm hover:shadow-md transition-shadow">
+                    <div class="p-5">
+                        <h4 class="font-bold text-xl mb-2 text-gray-800">张博士</h4>
+                        <p class="text-blue-600 text-sm mb-3">首席技术官</p>
+                        <p class="text-gray-600">
+                            计算机视觉专家，清华大学博士，拥有10年图像识别算法研发经验。
+                        </p>
+                    </div>
+                </div>
+                <div class="bg-white border border-gray-200 rounded-lg overflow-hidden shadow-sm hover:shadow-md transition-shadow">
+                    <div class="p-5">
+                        <h4 class="font-bold text-xl mb-2 text-gray-800">李工程师</h4>
+                        <p class="text-blue-600 text-sm mb-3">算法工程师</p>
+                        <p class="text-gray-600">
+                            深度学习专家，前Google AI研究员，专注于图像特征提取模型优化。
+                        </p>
+                    </div>
+                </div>
+                <div class="bg-white border border-gray-200 rounded-lg overflow-hidden shadow-sm hover:shadow-md transition-shadow">
+                    <div class="p-5">
+                        <h4 class="font-bold text-xl mb-2 text-gray-800">王研究员</h4>
+                        <p class="text-blue-600 text-sm mb-3">研发总监</p>
+                        <p class="text-gray-600">
+                            系统架构专家，负责高性能图像检索系统设计与实现。
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div>
+            <h3 class="text-2xl font-bold mb-6 text-gray-800">发展历程</h3>
+            <div class="relative">
+                <!-- Timeline track -->
+                <div class="absolute h-full w-1 bg-blue-200 left-0 sm:left-1/2 transform sm:-translate-x-1/2"></div>
+                
+                <!-- Timeline items -->
+                <div class="mb-8 flex flex-col sm:flex-row">
+                    <div class="sm:w-1/2 sm:pr-8 sm:text-right">
+                        <div class="bg-blue-50 p-4 rounded shadow-sm border border-blue-100 sm:ml-auto sm:mr-0 sm:max-w-md">
+                            <h4 class="font-bold text-xl text-gray-800">2023年</h4>
+                            <p class="text-gray-600">公司成立，获得天使轮融资</p>
+                        </div>
+                    </div>
+                    <div class="rounded-full w-6 h-6 bg-blue-600 border-4 border-white absolute left-0 sm:left-1/2 transform -translate-x-2 sm:-translate-x-3 mt-4"></div>
+                    <div class="sm:w-1/2 sm:pl-8 hidden sm:block"></div>
+                </div>
+                
+                <div class="mb-8 flex flex-col sm:flex-row">
+                    <div class="sm:w-1/2 sm:pr-8 hidden sm:block"></div>
+                    <div class="rounded-full w-6 h-6 bg-blue-600 border-4 border-white absolute left-0 sm:left-1/2 transform -translate-x-2 sm:-translate-x-3 mt-4"></div>
+                    <div class="sm:w-1/2 sm:pl-8">
+                        <div class="bg-blue-50 p-4 rounded shadow-sm border border-blue-100 sm:max-w-md">
+                            <h4 class="font-bold text-xl text-gray-800">2024年</h4>
+                            <p class="text-gray-600">完成核心算法研发，推出测试版产品</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="mb-8 flex flex-col sm:flex-row">
+                    <div class="sm:w-1/2 sm:pr-8 sm:text-right">
+                        <div class="bg-blue-50 p-4 rounded shadow-sm border border-blue-100 sm:ml-auto sm:mr-0 sm:max-w-md">
+                            <h4 class="font-bold text-xl text-gray-800">2025年</h4>
+                            <p class="text-gray-600">正式上线相似图片搜索服务，迅速积累用户</p>
+                        </div>
+                    </div>
+                    <div class="rounded-full w-6 h-6 bg-blue-600 border-4 border-white absolute left-0 sm:left-1/2 transform -translate-x-2 sm:-translate-x-3 mt-4"></div>
+                    <div class="sm:w-1/2 sm:pl-8 hidden sm:block"></div>
+                </div>
+                
+                <div class="flex flex-col sm:flex-row">
+                    <div class="sm:w-1/2 sm:pr-8 hidden sm:block"></div>
+                    <div class="rounded-full w-6 h-6 bg-blue-600 border-4 border-white absolute left-0 sm:left-1/2 transform -translate-x-2 sm:-translate-x-3 mt-4"></div>
+                    <div class="sm:w-1/2 sm:pl-8">
+                        <div class="bg-blue-50 p-4 rounded shadow-sm border border-blue-100 sm:max-w-md">
+                            <h4 class="font-bold text-xl text-gray-800">未来</h4>
+                            <p class="text-gray-600">持续优化算法，扩大业务范围，成为行业标杆</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

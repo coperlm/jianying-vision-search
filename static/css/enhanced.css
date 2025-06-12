@@ -1,0 +1,298 @@
+/* 
+ * 鉴影科技 - 扩展样式表
+ * 增强用户体验的样式和动画效果
+ */
+
+/* ===== 基础响应式调整 ===== */
+@media (max-width: 640px) {
+    .container {
+        padding-left: 1rem;
+        padding-right: 1rem;
+    }
+    
+    h1, h2 {
+        font-size: 90%;
+    }
+}
+
+/* ===== 深色模式支持 ===== */
+.dark {
+    --bg-primary: #1a1a2e;
+    --bg-secondary: #16213e;
+    --text-primary: #e1e1e1;
+    --text-secondary: #b3b3b3;
+}
+
+.dark body {
+    background-color: var(--bg-primary);
+    color: var(--text-primary);
+}
+
+.dark .bg-white {
+    background-color: var(--bg-secondary);
+}
+
+.dark .text-gray-800 {
+    color: var(--text-primary);
+}
+
+.dark .text-gray-700,
+.dark .text-gray-600 {
+    color: var(--text-secondary);
+}
+
+/* ===== 自定义颜色渐变 ===== */
+.bg-gradient-blue-purple {
+    background: linear-gradient(135deg, #3b82f6, #8b5cf6);
+}
+
+.bg-gradient-green-blue {
+    background: linear-gradient(135deg, #10b981, #3b82f6);
+}
+
+.bg-gradient-orange-red {
+    background: linear-gradient(135deg, #f97316, #ef4444);
+}
+
+/* ===== 自定义动画 ===== */
+@keyframes fadeIn {
+    0% { opacity: 0; transform: translateY(20px); }
+    100% { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes slideInRight {
+    0% { transform: translateX(100%); opacity: 0; }
+    100% { transform: translateX(0); opacity: 1; }
+}
+
+@keyframes pulse {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.05); }
+}
+
+.animate-fade-in {
+    animation: fadeIn 0.5s ease forwards;
+}
+
+.animate-slide-in {
+    animation: slideInRight 0.5s ease forwards;
+}
+
+.animate-pulse {
+    animation: pulse 2s ease infinite;
+}
+
+/* 为不同元素添加延迟动画 */
+.delay-100 { animation-delay: 0.1s; }
+.delay-200 { animation-delay: 0.2s; }
+.delay-300 { animation-delay: 0.3s; }
+.delay-400 { animation-delay: 0.4s; }
+.delay-500 { animation-delay: 0.5s; }
+
+/* ===== 交互元素增强 ===== */
+.interactive {
+    transition: all 0.3s ease;
+}
+
+.interactive:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+}
+
+/* 自定义按钮效果 */
+.btn-primary {
+    @apply bg-blue-600 hover:bg-blue-700 text-white font-medium py-2 px-4 rounded-lg transition-all duration-300;
+}
+
+.btn-primary:hover {
+    @apply shadow-lg transform -translate-y-1;
+}
+
+.btn-secondary {
+    @apply bg-gray-100 hover:bg-gray-200 text-gray-800 font-medium py-2 px-4 rounded-lg transition-all duration-300;
+}
+
+.btn-secondary:hover {
+    @apply shadow-md;
+}
+
+.btn-outline {
+    @apply border border-blue-600 text-blue-600 hover:bg-blue-50 font-medium py-2 px-4 rounded-lg transition-all duration-300;
+}
+
+/* ===== 卡片样式增强 ===== */
+.card {
+    @apply bg-white rounded-xl shadow-md overflow-hidden transition-all duration-300;
+}
+
+.dark .card {
+    @apply bg-gray-800 shadow-xl;
+}
+
+.card:hover {
+    @apply shadow-lg;
+}
+
+/* ===== 图片增强效果 ===== */
+.img-hover-zoom {
+    overflow: hidden;
+}
+
+.img-hover-zoom img {
+    transition: transform 0.5s ease;
+}
+
+.img-hover-zoom:hover img {
+    transform: scale(1.1);
+}
+
+/* 图片边框效果 */
+.img-border {
+    border: 2px solid transparent;
+    transition: border-color 0.3s ease;
+}
+
+.img-border:hover {
+    border-color: #3b82f6;
+}
+
+/* ===== 表单元素美化 ===== */
+.custom-input {
+    @apply w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition duration-200;
+}
+
+.dark .custom-input {
+    @apply border-gray-600 bg-gray-700 text-white focus:ring-blue-400 focus:border-blue-400;
+}
+
+.custom-select {
+    @apply appearance-none w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition duration-200;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' stroke='%23374151'%3E%3Cpath stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M19 9l-7 7-7-7'%3E%3C/path%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 0.5rem center;
+    background-size: 1.5em 1.5em;
+    padding-right: 2.5rem;
+}
+
+.dark .custom-select {
+    @apply border-gray-600 bg-gray-700 text-white;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' stroke='%23E5E7EB'%3E%3Cpath stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M19 9l-7 7-7-7'%3E%3C/path%3E%3C/svg%3E");
+}
+
+/* ===== 自定义滚动条 ===== */
+.custom-scrollbar::-webkit-scrollbar {
+    width: 6px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-track {
+    background: #f1f1f1;
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb {
+    background: #c1c1c1;
+    border-radius: 3px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb:hover {
+    background: #a8a8a8;
+}
+
+.dark .custom-scrollbar::-webkit-scrollbar-track {
+    background: #2d3748;
+}
+
+.dark .custom-scrollbar::-webkit-scrollbar-thumb {
+    background: #4a5568;
+}
+
+.dark .custom-scrollbar::-webkit-scrollbar-thumb:hover {
+    background: #718096;
+}
+
+/* ===== 加载指示器 ===== */
+.loader {
+    border: 4px solid rgba(0, 0, 0, 0.1);
+    border-left-color: #3b82f6;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    animation: spin 1s linear infinite;
+}
+
+.dark .loader {
+    border-color: rgba(255, 255, 255, 0.1);
+    border-left-color: #3b82f6;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+/* ===== 工具提示 ===== */
+.tooltip {
+    position: relative;
+}
+
+.tooltip:before {
+    content: attr(data-tooltip);
+    position: absolute;
+    bottom: 100%;
+    left: 50%;
+    transform: translateX(-50%) translateY(5px);
+    padding: 0.5rem;
+    border-radius: 4px;
+    background: rgba(0, 0, 0, 0.8);
+    color: white;
+    font-size: 0.75rem;
+    white-space: nowrap;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.2s ease;
+}
+
+.tooltip:hover:before {
+    opacity: 1;
+    visibility: visible;
+    transform: translateX(-50%) translateY(-5px);
+}
+
+/* 移动端适配菜单 */
+.mobile-menu {
+    transform: translateY(-10px);
+    transition: transform 0.3s ease, opacity 0.3s ease;
+}
+
+.mobile-menu.open {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* 相似度指示器 */
+.similarity-meter {
+    height: 8px;
+    border-radius: 4px;
+    background: #e5e7eb;
+    overflow: hidden;
+}
+
+.similarity-meter-fill {
+    height: 100%;
+    transition: width 1s ease;
+}
+
+.similarity-high {
+    background: linear-gradient(90deg, #10b981, #059669);
+}
+
+.similarity-medium {
+    background: linear-gradient(90deg, #3b82f6, #2563eb);
+}
+
+.similarity-low {
+    background: linear-gradient(90deg, #f59e0b, #d97706);
+}
+
+.similarity-very-low {
+    background: linear-gradient(90deg, #ef4444, #dc2626);
+}

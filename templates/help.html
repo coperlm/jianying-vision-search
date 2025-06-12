@@ -1,0 +1,160 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="max-w-5xl mx-auto">
+    <div class="bg-white rounded-xl shadow-lg p-8 mb-10">
+        <h2 class="text-3xl font-bold mb-8 text-center text-gray-800">使用指南</h2>
+        
+        <div class="mb-10">
+            <h3 class="text-2xl font-bold mb-6 text-gray-800 flex items-center">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-7 w-7 mr-2 text-blue-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                </svg>
+                常见问题
+            </h3>
+            
+            <div class="space-y-6">
+                <div class="bg-gray-50 p-5 rounded-lg shadow-sm">
+                    <h4 class="font-bold text-lg text-gray-800 mb-2">鉴影科技是做什么的？</h4>
+                    <p class="text-gray-700">
+                        鉴影科技提供图像相似度检索服务，帮助用户在海量图片中找到与上传图片相似的图像。我们的技术可用于保护知识产权、查找盗版/侵权图片、寻找图片来源等多种场景。
+                    </p>
+                </div>
+                
+                <div class="bg-gray-50 p-5 rounded-lg shadow-sm">
+                    <h4 class="font-bold text-lg text-gray-800 mb-2">如何使用图像相似度搜索服务？</h4>
+                    <p class="text-gray-700">
+                        使用非常简单：在首页上传您想要查找的图片，系统会自动分析图片特征并搜索相似图像，几秒钟内即可得到结果。搜索结果会显示相似度最高的图片及其对应的相似度百分比。
+                    </p>
+                </div>
+                
+                <div class="bg-gray-50 p-5 rounded-lg shadow-sm">
+                    <h4 class="font-bold text-lg text-gray-800 mb-2">支持哪些图片格式？</h4>
+                    <p class="text-gray-700">
+                        我们支持所有常见的图片格式，包括JPG、JPEG、PNG、GIF等。图片大小建议不超过10MB，以确保更快的处理速度。
+                    </p>
+                </div>
+                
+                <div class="bg-gray-50 p-5 rounded-lg shadow-sm">
+                    <h4 class="font-bold text-lg text-gray-800 mb-2">相似度百分比代表什么？</h4>
+                    <p class="text-gray-700">
+                        相似度百分比反映了两张图片在视觉特征上的接近程度：
+                    </p>
+                    <ul class="list-disc pl-5 mt-2 space-y-1 text-gray-700">
+                        <li>90%以上：几乎相同的图片，可能只有微小的变化或编辑</li>
+                        <li>70%-90%：高度相似的图片，可能是相同主题的不同角度或编辑版本</li>
+                        <li>50%-70%：中等相似度，可能存在一些共同元素或颜色模式</li>
+                        <li>50%以下：相似度较低，可能只有少量共同特征</li>
+                    </ul>
+                </div>
+                
+                <div class="bg-gray-50 p-5 rounded-lg shadow-sm">
+                    <h4 class="font-bold text-lg text-gray-800 mb-2">为什么没有找到任何相似图片？</h4>
+                    <p class="text-gray-700">
+                        如果系统没有返回相似图片，可能是因为：
+                    </p>
+                    <ul class="list-disc pl-5 mt-2 space-y-1 text-gray-700">
+                        <li>我们的数据库中还没有与您上传图片相似的图像</li>
+                        <li>上传的图片质量过低或特征不明显</li>
+                        <li>图片内容过于独特或罕见</li>
+                    </ul>
+                    <p class="text-gray-700 mt-2">
+                        请尝试上传其他图片或稍后再试。
+                    </p>
+                </div>
+            </div>
+        </div>
+        
+        <div class="mb-10">
+            <h3 class="text-2xl font-bold mb-6 text-gray-800 flex items-center">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-7 w-7 mr-2 text-blue-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" />
+                </svg>
+                使用教程
+            </h3>
+            
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div class="bg-white border border-gray-200 rounded-lg overflow-hidden shadow-sm">
+                    <div class="p-5">
+                        <div class="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center text-blue-600 font-bold text-xl mb-4 mx-auto">
+                            1
+                        </div>
+                        <h4 class="font-bold text-xl mb-3 text-center text-gray-800">上传图片</h4>
+                        <p class="text-gray-700 text-center">
+                            在首页点击上传区域或将图片拖放到指定区域。您可以通过电脑、手机或平板设备上传图片。
+                        </p>
+                    </div>
+                </div>
+                
+                <div class="bg-white border border-gray-200 rounded-lg overflow-hidden shadow-sm">
+                    <div class="p-5">
+                        <div class="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center text-blue-600 font-bold text-xl mb-4 mx-auto">
+                            2
+                        </div>
+                        <h4 class="font-bold text-xl mb-3 text-center text-gray-800">系统分析</h4>
+                        <p class="text-gray-700 text-center">
+                            系统自动提取图片特征，并在数据库中搜索相似图像。整个过程通常只需几秒钟。
+                        </p>
+                    </div>
+                </div>
+                
+                <div class="bg-white border border-gray-200 rounded-lg overflow-hidden shadow-sm">
+                    <div class="p-5">
+                        <div class="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center text-blue-600 font-bold text-xl mb-4 mx-auto">
+                            3
+                        </div>
+                        <h4 class="font-bold text-xl mb-3 text-center text-gray-800">查看结果</h4>
+                        <p class="text-gray-700 text-center">
+                            系统将展示与您上传图片最相似的图像，并标明相似度百分比。点击图片可查看原图和更多信息。
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div>
+            <h3 class="text-2xl font-bold mb-6 text-gray-800 flex items-center">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-7 w-7 mr-2 text-blue-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" />
+                </svg>
+                隐私与安全
+            </h3>
+            
+            <div class="bg-blue-50 p-6 rounded-lg border border-blue-100">
+                <h4 class="font-bold text-lg text-gray-800 mb-3">您的图片安全吗？</h4>
+                <p class="text-gray-700 mb-4">
+                    保护用户隐私和数据安全是我们的首要任务。以下是我们对用户图片的处理方式：
+                </p>
+                <ul class="list-disc pl-5 space-y-2 text-gray-700">
+                    <li>
+                        <span class="font-medium">安全存储：</span>
+                        上传的图片存储在安全的服务器中，采用加密技术保护。
+                    </li>
+                    <li>
+                        <span class="font-medium">有限保留：</span>
+                        除非您特别要求永久保存，否则上传的图片将在24小时后自动删除。
+                    </li>
+                    <li>
+                        <span class="font-medium">不会共享：</span>
+                        我们不会将您的图片与第三方共享，也不会用于与服务无关的目的。
+                    </li>
+                    <li>
+                        <span class="font-medium">特征提取：</span>
+                        系统只会提取图片的视觉特征进行匹配，不会分析或存储图片中的个人身份信息。
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    
+    <div class="bg-gray-100 rounded-xl p-8 text-center">
+        <h3 class="text-2xl font-bold mb-4 text-gray-800">还有其他问题？</h3>
+        <p class="text-lg text-gray-700 mb-6">
+            如果您有任何其他问题或需要技术支持，请随时联系我们的客服团队
+        </p>
+        <a href="/contact" class="inline-block bg-blue-600 hover:bg-blue-700 text-white font-medium py-3 px-6 rounded-lg transition duration-300">
+            联系我们
+        </a>
+    </div>
+</div>
+{% endblock %}

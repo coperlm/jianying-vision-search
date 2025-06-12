@@ -10,64 +10,126 @@
         color: white;
         font-weight: bold;
         border-radius: 4px;
+        box-shadow: 0 2px 4px rgba(0,0,0,0.15);
+        backdrop-filter: blur(4px);
     }
     
     .similarity-high {
-        background-color: #10B981;
+        background: linear-gradient(to right, #10B981, #059669);
     }
     
     .similarity-medium {
-        background-color: #3B82F6;
+        background: linear-gradient(to right, #3B82F6, #2563EB);
     }
     
     .similarity-low {
-        background-color: #F59E0B;
+        background: linear-gradient(to right, #F59E0B, #D97706);
     }
     
     .similarity-very-low {
-        background-color: #EF4444;
+        background: linear-gradient(to right, #EF4444, #DC2626);
     }
     
     .image-card {
         transition: all 0.3s ease;
+        border: 2px solid transparent;
     }
     
     .image-card:hover {
         transform: translateY(-5px);
         box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+        border-color: #3b82f6;
+    }
+    
+    /* 相似度计量条动画 */
+    .similarity-meter {
+        height: 6px;
+        background: #e5e7eb;
+        border-radius: 3px;
+        overflow: hidden;
+        margin: 8px 0;
+    }
+    
+    .similarity-meter-fill {
+        height: 100%;
+        border-radius: 3px;
+        transition: width 1s ease-out;
+    }
+    
+    /* 暗黑模式支持 */
+    .dark .similarity-meter {
+        background: #374151;
+    }
+    
+    .dark .image-card {
+        background-color: #1f2937 !important;
+    }
+    
+    .dark .text-gray-800 {
+        color: #f3f4f6 !important;
+    }
+    
+    .dark .text-gray-500, 
+    .dark .text-gray-700 {
+        color: #9ca3af !important;
+    }
+    
+    .dark .bg-gray-50 {
+        background-color: #1f2937 !important;
     }
 </style>
 {% endblock %}
 
 {% block content %}
-<div class="mb-8">
-    <a href="{{ url_for('index') }}" class="inline-flex items-center text-blue-600 hover:text-blue-800">
+<div class="mb-8 flex items-center justify-between">
+    <a href="{{ url_for('index') }}" class="inline-flex items-center text-blue-600 hover:text-blue-800 dark:text-blue-400 dark:hover:text-blue-300">
         <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-1" viewBox="0 0 20 20" fill="currentColor">
             <path fill-rule="evenodd" d="M9.707 16.707a1 1 0 01-1.414 0l-6-6a1 1 0 010-1.414l6-6a1 1 0 011.414 1.414L5.414 9H17a1 1 0 110 2H5.414l4.293 4.293a1 1 0 010 1.414z" clip-rule="evenodd" />
         </svg>
         返回上传页面
     </a>
+    
+    <div class="text-sm text-gray-500 dark:text-gray-400">
+        搜索时间: {{ now.strftime('%Y-%m-%d %H:%M:%S') }}
+    </div>
 </div>
 
-<div class="bg-white rounded-xl shadow-lg p-8 mb-10">
-    <h2 class="text-2xl font-bold mb-6 text-center">相似图片搜索结果</h2>
+<div class="bg-white dark:bg-gray-800 rounded-xl shadow-lg p-6 md:p-8 mb-10 card animate-on-load">
+    <h2 class="text-2xl md:text-3xl font-bold mb-6 text-center text-gray-800 dark:text-gray-100">相似图片搜索结果</h2>
     
-    <div class="mb-8">
-        <h3 class="text-lg font-medium mb-3">您的查询图片:</h3>
-        <div class="max-w-md mx-auto">
-            <img src="{{ url_for('static', filename=query_image.replace('static/', '')) }}" alt="查询图片" class="w-full h-auto rounded-lg shadow-md">
+    <div class="mb-10">
+        <div class="flex items-center mb-6">
+            <h3 class="text-lg md:text-xl font-medium text-gray-800 dark:text-gray-100">您的查询图片</h3>
+            <span class="ml-auto bg-blue-100 text-blue-800 dark:bg-blue-900 dark:text-blue-300 text-xs font-bold px-2.5 py-0.5 rounded">参考图像</span>
+        </div>
+        
+        <div class="max-w-md mx-auto bg-gray-50 dark:bg-gray-700 rounded-lg overflow-hidden shadow-md hover:shadow-lg transition-shadow duration-300">
+            <img src="{{ url_for('static', filename=query_image.replace('static/', '')) }}" alt="查询图片" class="w-full h-auto object-contain" 
+                 onclick="showImagePreview('{{ url_for('static', filename=query_image.replace('static/', '')) }}', '查询图片')"
+                 style="cursor: pointer;">
+            <div class="p-4 border-t border-gray-100 dark:border-gray-600">
+                <h4 class="font-medium text-gray-800 dark:text-gray-100 truncate">参考图片</h4>
+                <p class="text-gray-500 text-sm mt-1">用于查找相似图像的原始图片</p>
+            </div>
         </div>
     </div>
     
     <div>
-        <h3 class="text-lg font-medium mb-4">找到的相似图片:</h3>
+        <div class="flex items-center justify-between mb-6">
+            <h3 class="text-lg md:text-xl font-medium text-gray-800 dark:text-gray-100">找到的相似图片</h3>
+            <div class="text-sm text-gray-500 dark:text-gray-400">共找到 <span class="font-bold text-blue-600 dark:text-blue-400">{{ similar_images|length }}</span> 个结果</div>
+        </div>
         
         {% if similar_images|length > 0 %}
             <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
                 {% for img in similar_images %}
-                    <div class="image-card bg-gray-50 rounded-lg overflow-hidden shadow-md">
+                    <div class="image-card bg-gray-50 rounded-lg overflow-hidden shadow-md animate-on-load" style="animation-delay: {{ loop.index * 100 }}ms;">
                         <div class="relative">
-                            <img src="{{ url_for('static', filename=img.path.replace('static/', '')) }}" alt="相似图片" class="w-full h-48 object-cover">
+                            <img src="{{ url_for('static', filename=img.path.replace('static/', '')) }}" 
+                                 alt="相似图片" 
+                                 class="w-full h-48 object-cover" 
+                                 onclick="showImagePreview('{{ url_for('static', filename=img.path.replace('static/', '')) }}', '{{ img.filename }}')"
+                                 style="cursor: pointer;">
                             <div class="similarity-badge 
                                 {% if img.similarity > 90 %}similarity-high
                                 {% elif img.similarity > 70 %}similarity-medium
@@ -77,49 +139,214 @@
                             </div>
                         </div>
                         <div class="p-4">
-                            <h4 class="font-medium text-gray-800 truncate mb-1">{{ img.filename }}</h4>
-                            <p class="text-gray-500 text-sm mb-3">相似度: {{ "%.1f"|format(img.similarity) }}%</p>
-                            <a href="{{ url_for('static', filename=img.path.replace('static/', '')) }}" target="_blank" class="text-blue-600 hover:text-blue-800 text-sm flex items-center">
-                                <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 mr-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
-                                </svg>
-                                查看原图
-                            </a>
+                            <h4 class="font-medium text-gray-800 dark:text-gray-100 truncate mb-1">{{ img.filename }}</h4>
+                            
+                            <!-- 相似度计量条 -->
+                            <div class="similarity-meter">
+                                <div class="similarity-meter-fill 
+                                    {% if img.similarity > 90 %}similarity-high
+                                    {% elif img.similarity > 70 %}similarity-medium
+                                    {% elif img.similarity > 50 %}similarity-low
+                                    {% else %}similarity-very-low{% endif %}" 
+                                    style="width: {{ img.similarity }}%;">
+                                </div>
+                            </div>
+                            <p class="text-gray-500 dark:text-gray-400 text-sm mb-3">相似度: {{ "%.1f"|format(img.similarity) }}%</p>
+                            
+                            <div class="flex justify-between">
+                                <button onclick="searchSimilar('{{ img.path }}')" class="text-blue-600 hover:text-blue-800 dark:text-blue-400 dark:hover:text-blue-300 text-sm flex items-center">
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 mr-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+                                    </svg>
+                                    以此搜索
+                                </button>
+                                
+                                <a href="{{ url_for('static', filename=img.path.replace('static/', '')) }}" 
+                                   download="{{ img.filename }}"
+                                   class="text-green-600 hover:text-green-800 dark:text-green-400 dark:hover:text-green-300 text-sm flex items-center">
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 mr-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
+                                    </svg>
+                                    下载图片
+                                </a>
+                            </div>
                         </div>
                     </div>
                 {% endfor %}
-            </div>
-        {% else %}
-            <div class="text-center py-12 bg-gray-50 rounded-lg">
-                <svg xmlns="http://www.w3.org/2000/svg" class="h-16 w-16 text-gray-400 mx-auto mb-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            </div>        {% else %}
+            <div class="text-center py-12 bg-gray-50 dark:bg-gray-700 rounded-lg animate-on-load">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-16 w-16 text-gray-400 dark:text-gray-500 mx-auto mb-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9.172 16.172a4 4 0 015.656 0M9 10h.01M15 10h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
                 </svg>
-                <h4 class="text-xl font-medium text-gray-700 mb-2">未找到相似图片</h4>
-                <p class="text-gray-500">我们的数据库中没有与您上传的图片相似的图像</p>
+                <h4 class="text-xl font-medium text-gray-700 dark:text-gray-300 mb-2">未找到相似图片</h4>
+                <p class="text-gray-500 dark:text-gray-400 mb-4">我们的数据库中没有与您上传的图片相似的图像</p>
+                <button onclick="window.location.href='/gallery'" class="mt-4 inline-flex items-center px-4 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2" viewBox="0 0 20 20" fill="currentColor">
+                        <path fill-rule="evenodd" d="M4 3a2 2 0 00-2 2v10a2 2 0 002 2h12a2 2 0 002-2V5a2 2 0 00-2-2H4zm12 12H4l4-8 3 6 2-4 3 6z" clip-rule="evenodd" />
+                    </svg>
+                    浏览图像库
+                </button>
             </div>
         {% endif %}
     </div>
 </div>
 
-<div class="bg-blue-50 rounded-lg p-8 border border-blue-200">
-    <h3 class="text-xl font-bold mb-4 text-blue-800">相似度解释</h3>
-    <div class="space-y-3">
-        <div class="flex items-start">
-            <div class="w-12 h-6 bg-green-500 rounded mr-3 flex-shrink-0"></div>
-            <p class="text-gray-700"><span class="font-medium">90% 以上</span> - 几乎相同的图片，可能只有微小的变化或编辑</p>
+<div class="bg-blue-50 dark:bg-blue-900/30 rounded-lg p-6 md:p-8 border border-blue-200 dark:border-blue-800 card animate-on-load">
+    <h3 class="text-xl font-bold mb-6 text-blue-800 dark:text-blue-300">相似度解释</h3>
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <div class="space-y-4">
+            <div class="flex items-center">
+                <div class="w-12 h-6 bg-gradient-to-r from-green-500 to-green-600 rounded mr-3 flex-shrink-0"></div>
+                <div>
+                    <h4 class="font-medium text-gray-800 dark:text-gray-200">90% 以上 - 极高相似度</h4>
+                    <p class="text-gray-700 dark:text-gray-400 text-sm">几乎相同的图片，可能只有微小的变化或编辑</p>
+                </div>
+            </div>
+            <div class="flex items-center">
+                <div class="w-12 h-6 bg-gradient-to-r from-blue-500 to-blue-600 rounded mr-3 flex-shrink-0"></div>
+                <div>
+                    <h4 class="font-medium text-gray-800 dark:text-gray-200">70% - 90% - 高相似度</h4>
+                    <p class="text-gray-700 dark:text-gray-400 text-sm">高度相似的图片，可能是相同主题的不同角度或编辑版本</p>
+                </div>
+            </div>
         </div>
-        <div class="flex items-start">
-            <div class="w-12 h-6 bg-blue-500 rounded mr-3 flex-shrink-0"></div>
-            <p class="text-gray-700"><span class="font-medium">70% - 90%</span> - 高度相似的图片，可能是相同主题的不同角度或编辑版本</p>
-        </div>
-        <div class="flex items-start">
-            <div class="w-12 h-6 bg-yellow-500 rounded mr-3 flex-shrink-0"></div>
-            <p class="text-gray-700"><span class="font-medium">50% - 70%</span> - 中等相似度，可能存在一些共同元素或颜色模式</p>
-        </div>
-        <div class="flex items-start">
-            <div class="w-12 h-6 bg-red-500 rounded mr-3 flex-shrink-0"></div>
-            <p class="text-gray-700"><span class="font-medium">50% 以下</span> - 相似度较低，可能只有少量共同特征</p>
+        <div class="space-y-4">
+            <div class="flex items-center">
+                <div class="w-12 h-6 bg-gradient-to-r from-yellow-500 to-yellow-600 rounded mr-3 flex-shrink-0"></div>
+                <div>
+                    <h4 class="font-medium text-gray-800 dark:text-gray-200">50% - 70% - 中等相似度</h4>
+                    <p class="text-gray-700 dark:text-gray-400 text-sm">可能存在一些共同元素、颜色模式或构图相似</p>
+                </div>
+            </div>
+            <div class="flex items-center">
+                <div class="w-12 h-6 bg-gradient-to-r from-red-500 to-red-600 rounded mr-3 flex-shrink-0"></div>
+                <div>
+                    <h4 class="font-medium text-gray-800 dark:text-gray-200">50% 以下 - 低相似度</h4>
+                    <p class="text-gray-700 dark:text-gray-400 text-sm">相似度较低，可能只有少量共同特征或颜色分布</p>
+                </div>
+            </div>
         </div>
     </div>
+    
+    <div class="mt-8 p-4 bg-white dark:bg-gray-800 rounded-lg border border-gray-200 dark:border-gray-700">
+        <p class="text-gray-700 dark:text-gray-300 text-sm">
+            <span class="font-bold text-blue-600 dark:text-blue-400">专业提示：</span> 
+            相似度算法基于图像的特征点、颜色分布、边缘和纹理等多个方面进行计算，不同类型的图像可能会有不同的判断标准。
+            如果您对搜索结果不满意，可以尝试裁剪图像或者调整图像的亮度和对比度后再次搜索。
+        </p>
+    </div>
 </div>
+
+<div class="mt-8 text-center">
+    <h3 class="text-lg font-medium mb-4 text-gray-700 dark:text-gray-300">想要进一步探索？</h3>
+    <div class="flex flex-col sm:flex-row justify-center space-y-3 sm:space-y-0 sm:space-x-4">
+        <a href="/gallery" class="inline-flex items-center px-4 py-2 bg-indigo-600 text-white rounded-md hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2" viewBox="0 0 20 20" fill="currentColor">
+                <path fill-rule="evenodd" d="M4 3a2 2 0 00-2 2v10a2 2 0 002 2h12a2 2 0 002-2V5a2 2 0 00-2-2H4zm12 12H4l4-8 3 6 2-4 3 6z" clip-rule="evenodd" />
+            </svg>
+            浏览全部图库
+        </a>
+        <a href="/" class="inline-flex items-center px-4 py-2 bg-green-600 text-white rounded-md hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-green-500">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2" viewBox="0 0 20 20" fill="currentColor">
+                <path fill-rule="evenodd" d="M3 17a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM6.293 6.707a1 1 0 010-1.414l3-3a1 1 0 011.414 0l3 3a1 1 0 01-1.414 1.414L11 5.414V13a1 1 0 11-2 0V5.414L7.707 6.707a1 1 0 01-1.414 0z" clip-rule="evenodd" />
+            </svg>
+            上传新图片
+        </a>
+    </div>
+</div>
+{% endblock %}
+
+{% block scripts %}
+<script>
+// 图片预览功能
+function showImagePreview(imageUrl, title) {
+    // 创建预览遮罩
+    const overlay = document.createElement('div');
+    overlay.className = 'fixed inset-0 z-50 bg-black bg-opacity-80 flex items-center justify-center p-4 transition-opacity duration-300 opacity-0';
+    overlay.id = 'imagePreviewOverlay';
+    
+    // 创建预览内容
+    overlay.innerHTML = `
+        <div class="max-w-5xl max-h-[90vh] bg-white dark:bg-gray-900 rounded-lg overflow-hidden shadow-2xl relative transform transition-transform duration-300 scale-95">
+            <div class="flex justify-between items-center p-4 border-b border-gray-200 dark:border-gray-700">
+                <h3 class="text-lg font-medium text-gray-900 dark:text-gray-100">${title || '图片预览'}</h3>
+                <button id="closePreview" class="text-gray-500 hover:text-gray-700 dark:text-gray-400 dark:hover:text-gray-200 focus:outline-none">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+                    </svg>
+                </button>
+            </div>
+            <div class="p-4 bg-gray-50 dark:bg-gray-800 overflow-auto" style="max-height: calc(90vh - 60px);">
+                <img src="${imageUrl}" alt="${title || '预览图'}" class="max-w-full mx-auto" style="max-height: calc(90vh - 120px);">
+            </div>
+            <div class="p-4 border-t border-gray-200 dark:border-gray-700 flex justify-between">
+                <button class="px-4 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-700" onclick="searchSimilar('${imageUrl}')">搜索相似图片</button>
+                <a href="${imageUrl}" download class="px-4 py-2 bg-green-600 text-white rounded-md hover:bg-green-700">下载图片</a>
+            </div>
+        </div>
+    `;
+    
+    // 添加到DOM
+    document.body.appendChild(overlay);
+    document.body.style.overflow = 'hidden';
+    
+    // 动画显示
+    setTimeout(() => {
+        overlay.style.opacity = '1';
+        overlay.querySelector('div').classList.remove('scale-95');
+        overlay.querySelector('div').classList.add('scale-100');
+    }, 10);
+    
+    // 绑定关闭事件
+    overlay.querySelector('#closePreview').addEventListener('click', closeImagePreview);
+    overlay.addEventListener('click', (e) => {
+        if (e.target === overlay) {
+            closeImagePreview();
+        }
+    });
+    
+    // 绑定ESC键关闭
+    document.addEventListener('keydown', handleEscKey);
+    
+    function handleEscKey(e) {
+        if (e.key === 'Escape') {
+            closeImagePreview();
+        }
+    }
+    
+    function closeImagePreview() {
+        const overlay = document.getElementById('imagePreviewOverlay');
+        if (!overlay) return;
+        
+        overlay.style.opacity = '0';
+        overlay.querySelector('div').classList.remove('scale-100');
+        overlay.querySelector('div').classList.add('scale-95');
+        
+        setTimeout(() => {
+            document.body.removeChild(overlay);
+            document.body.style.overflow = '';
+            document.removeEventListener('keydown', handleEscKey);
+        }, 300);
+    }
+}
+
+// 搜索相似图片功能
+function searchSimilar(imagePath) {
+    window.location.href = `/search?image=${encodeURIComponent(imagePath)}`;
+}
+
+// 相似度计量条动画
+document.addEventListener('DOMContentLoaded', function() {
+    // 为了触发动画，先设置宽度为0，然后延迟恢复实际宽度
+    const meters = document.querySelectorAll('.similarity-meter-fill');
+    meters.forEach(meter => {
+        const originalWidth = meter.style.width;
+        meter.style.width = '0%';
+        
+        setTimeout(() => {
+            meter.style.width = originalWidth;
+        }, 300);
+    });
+});
+</script>
 {% endblock %}

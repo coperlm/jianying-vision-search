@@ -131,6 +131,56 @@ def stats():
     return render_template('stats.html', stats=stats_data)
 
 
+@app.route('/gallery')
+def gallery():
+    """图库浏览页面"""
+    # 准备图库数据
+    images = []
+    for img in image_similarity.image_database:
+        images.append({
+            'path': img['path'],
+            'filename': img['filename']
+        })
+    return render_template('gallery.html', images=images)
+
+
+@app.route('/contact')
+def contact():
+    """联系我们页面"""
+    return render_template('contact.html')
+
+
+@app.route('/search')
+def search_by_image():
+    """根据图片路径搜索相似图片"""
+    image_path = request.args.get('image', '')
+    if not image_path or not os.path.exists(image_path):
+        flash('未找到指定图片')
+        return redirect(url_for('index'))
+        
+    try:
+        # 读取图像并搜索相似图片
+        image = cv2.imread(image_path)
+        if image is None:
+            flash('无法读取指定图片')
+            return redirect(url_for('index'))
+        
+        # 搜索相似图像
+        similar_images = image_similarity.search(image)
+        
+        # 跟踪处理计数
+        increment_processed_count()
+        
+        return render_template('results.html', 
+                              query_image=image_path, 
+                              similar_images=similar_images,
+                              now=datetime.datetime.now())
+    
+    except Exception as e:
+        flash(f'处理图像时出错: {str(e)}')
+        return redirect(url_for('index'))
+
+
 @app.route('/upload', methods=['POST'])
 def upload_file():
     if 'file' not in request.files:
@@ -206,6 +256,20 @@ def api_search():
             return jsonify({'error': str(e)}), 500
     
     return jsonify({'error': '不支持的文件类型'}), 400
+
+
+@app.route('/api/stats')
+def api_stats():
+    """API端点，获取网站统计数据"""
+    try:
+        stats_data = {
+            'database_size': len(image_similarity.image_database),
+            'processed_count': get_processed_count(),
+            'uploads_today': get_uploads_today()
+        }
+        return jsonify(stats_data)
+    except Exception as e:
+        return jsonify({'error': str(e)}), 500
 
 
 # 创建一个上下文处理器，添加全局变量到所有模板
