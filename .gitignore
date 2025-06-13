@@ -1,2 +1,2 @@
 *.log
-/static/images/test/*.jpg
+# /static/images/test/*.jpg
