@@ -2,7 +2,7 @@
 
 一个基于Python和Tailwind CSS的图像相似度检测Web应用，可以上传图片并在全网范围内搜索相似图像。
 
-![](README\image-20250613183212063.png)
+![](README/image-20250613183212063.png)
 
 ## 功能特点
 
